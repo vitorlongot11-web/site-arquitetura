@@ -10,6 +10,7 @@
   <link rel="preload" href="fonts/InstrumentSerif-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/palco.css">
 </head>
 <body>
 
@@ -23,6 +24,12 @@
   <ol id="menu-lista"></ol>
 </nav>
 <nav class="pontos" id="pontos" aria-label="Posição na página"></nav>
+
+<div class="controles" id="controles">
+  <button type="button" id="prev" aria-label="Voltar">&#8249;</button>
+  <button type="button" id="next" aria-label="Avançar">&#8250;</button>
+</div>
+<div class="progresso" aria-hidden="true"><span id="barra"></span></div>
 
 <main>
 
@@ -71,7 +78,7 @@
     </svg>
   </div>
 
-  <p class="dica">← → avançam   ↑ ↓ trocam de seção</p>
+  <p class="dica">← → avançam   ↑ ↓ trocam de seção   F tela cheia</p>
 </section>
 
 <!-- 02 O QUE É -->
