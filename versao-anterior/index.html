@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arquitetura — Laura Tertuliano</title>
+  <meta name="description" content="Trabalho escolar sobre Arquitetura: profissão, mercado, inovações e o futuro das cidades.">
+  <meta name="theme-color" content="#0A2166">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='22' fill='%230A2166'/%3E%3Cg transform='translate(0 4)' fill='none' stroke='%23F3F6FF' stroke-width='6' stroke-linejoin='round'%3E%3Ccircle cx='60' cy='15' r='7'/%3E%3Cpath d='M55 22L24 98M65 22L96 98'/%3E%3Cpath d='M6 52L16 42L60 86L104 42L114 52L60 106Z'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preload" href="../fonts/InstrumentSerif-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <a class="marca" href="#capa" aria-label="Voltar à capa"><svg class="emb" viewBox="0 0 120 112" aria-hidden="true"><circle cx="60" cy="11" r="7"/><path d="M55 18L22 98M65 18L98 98"/><path d="M6 52L16 42L60 86L104 42L114 52L60 106Z"/></svg><span>Arquitetura</span><span id="contador" aria-live="off">01 / 09</span></a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Seções</button>
+</header>
+
+<nav class="menu" id="menu" hidden aria-label="Seções do trabalho">
+  <button class="menu-btn menu-fechar" id="menu-fechar">Fechar</button>
+  <ol id="menu-lista"></ol>
+</nav>
+<nav class="pontos" id="pontos" aria-label="Posição na página"></nav>
+
+<main>
+
+<!-- 01 CAPA -->
+<section class="prancha capa t-profundo" id="capa" data-nome="Capa">
+  <div class="wrap capa-grid">
+    <div>
+      <p class="tag">Prancha 01</p>
+      <h1 id="titulo"><span class="w" style="--k:0"><span>Arquitetura</span></span></h1>
+      <p class="sub" id="subtitulo">Profissão, mercado e o futuro das cidades</p>
+      <div class="ficha">
+        <p><strong>Laura Tertuliano</strong></p>
+        <p>1º ano do EM</p>
+        <p>Itinerário formativo de humanas: geografia</p>
+        <p>Escola Franciscana Imaculada Conceição</p>
+        <p>Professor Aido</p>
+      </div>
+      <button class="entrar" id="entrar">Entrar</button>
+    </div>
+
+    <svg class="desenho draw capa-desenho" viewBox="0 0 600 440" role="img" aria-label="Desenho de linha de uma fachada de edifícios com medidas">
+      <g>
+        <path class="tr" d="M20 390H580" style="--d:0"/>
+        <path class="tr" d="M60 390V140H260V390" style="--d:.15"/>
+        <path class="tr" d="M60 140L90 120H230L260 140" style="--d:.3"/>
+        <path class="tr" d="M260 390V230H400V390" style="--d:.4"/>
+        <path class="tr" d="M260 230H400M270 218H390V230" style="--d:.5"/>
+        <path class="tr" d="M400 390V70H520V390" style="--d:.55"/>
+        <path class="tr" d="M395 70H525M410 70V50H510V70" style="--d:.7"/>
+        <g data-win="78,165,3,4,32,30,56,52" style="--d:.9"></g>
+        <g data-win="280,255,2,2,36,34,56,56" style="--d:1.1"></g>
+        <g data-win="418,95,3,5,22,28,34,52" style="--d:1.2"></g>
+        <path class="tr fino" d="M60 412V404M520 412V404M60 408H520" style="--d:1.4"/>
+        <path class="tr fino" d="M548 70H556M548 390H556M552 70V390" style="--d:1.5"/>
+        <svg x="86" y="-8" width="108" height="100" viewBox="0 0 120 112" aria-hidden="true">
+          <circle class="tr" cx="60" cy="11" r="7" style="--d:1.2"/>
+          <path class="tr" d="M55 18L22 98L29 100L60 34" style="--d:1.3"/>
+          <path class="tr" d="M65 18L98 98L91 100L60 34" style="--d:1.3"/>
+          <path class="tr" d="M6 52L16 42L60 86L104 42L114 52L60 106Z" style="--d:1.5"/>
+          <path class="tr fino" d="M20.4 46.4l-4 4M24.8 50.8l-6.5 6.5M29.2 55.2l-4 4M33.6 59.6l-6.5 6.5M38 64l-4 4M42.4 68.4l-6.5 6.5M46.8 72.8l-4 4M51.2 77.2l-6.5 6.5M55.6 81.6l-4 4" style="--d:1.9"/>
+          <path class="tr fino" d="M99.6 46.4l4 4M95.2 50.8l6.5 6.5M90.8 55.2l4 4M86.4 59.6l6.5 6.5M82 64l4 4M77.6 68.4l6.5 6.5M73.2 72.8l4 4M68.8 77.2l6.5 6.5M64.4 81.6l4 4" style="--d:1.9"/>
+        </svg>
+        <text x="270" y="428">46,80 m</text>
+        <text x="560" y="236" transform="rotate(90 560 236)">31,20 m</text>
+      </g>
+    </svg>
+  </div>
+
+  <p class="dica">← → avançam   ↑ ↓ trocam de seção</p>
+</section>
+
+<!-- 02 O QUE É -->
+<section class="prancha t-papel" id="oque" data-nome="O que é Arquitetura">
+  <div class="wrap duas">
+    <div>
+      <p class="tag">Prancha 02</p>
+      <h2 class="frase">O que é Arquitetura e por que ela é importante?</h2>
+      <p class="lead">A arquitetura é a arte de planejar espaços e cidades, unindo técnica e estética. Ela é essencial porque garante segurança, melhora o bem-estar e a saúde com ambientes confortáveis, promove a sustentabilidade e preserva a identidade cultural da sociedade.</p>
+      <ul class="beneficios desenho">
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4L40 10V24C40 34 33 41 24 44C15 41 8 34 8 24V10Z"/><path d="M17 24l5 5 9-10"/></svg>
+          <span>Segurança</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40C10 30 6 22 6 16A9 9 0 0 1 24 13A9 9 0 0 1 42 16C42 22 38 30 24 40Z"/></svg>
+          <span>Bem-estar e saúde</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 18 22 8 40 8C40 26 30 38 10 38Z"/><path d="M10 38L28 20"/></svg>
+          <span>Sustentabilidade</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40H40M12 40V18M20 40V18M28 40V18M36 40V18M8 18L24 8L40 18Z"/></svg>
+          <span>Identidade cultural</span>
+        </li>
+      </ul>
+    </div>
+    <svg class="desenho draw planta" viewBox="0 0 320 240" role="img" aria-label="Desenho de planta baixa de uma casa">
+      <path class="tr" d="M10 10H310V230H10Z" style="--d:0"/>
+      <path class="tr" d="M120 10V120H10" style="--d:.3"/>
+      <path class="tr" d="M120 150V230" style="--d:.45"/>
+      <path class="tr" d="M210 10V90H310" style="--d:.55"/>
+      <path class="tr" d="M210 120V230" style="--d:.65"/>
+      <path class="tr fino" d="M120 120A30 30 0 0 1 90 150" style="--d:.9"/>
+      <path class="tr fino" d="M210 90A28 28 0 0 0 238 120" style="--d:1"/>
+      <path class="tr fino" d="M40 10H80M150 10H190M250 230H290" style="--d:1.1"/>
+      <path class="tr fino" d="M10 246H310M10 241V251M310 241V251" style="--d:1.3"/>
+      <text x="120" y="238" text-anchor="middle" transform="translate(40,18)">9,60 m</text>
+    </svg>
+  </div>
+  <a class="fonte" href="#fontes-1">Fontes desta seção</a>
+</section>
+
+<!-- 03 ÁREAS MAIS REMUNERADAS ATUALMENTE -->
+<section class="prancha t-prancha" id="atuais" data-nome="Áreas mais remuneradas hoje">
+  <div class="wrap">
+    <p class="tag">Prancha 03</p>
+    <h2 class="frase">Áreas mais remuneradas atualmente</h2>
+    <p class="lead">As áreas mais bem remuneradas na arquitetura:</p>
+    <div class="mestre" data-mestre>
+      <ul class="lista" role="tablist" aria-orientation="vertical" aria-label="Áreas mais remuneradas atualmente">
+        <li role="presentation"><button role="tab" id="a-t1" aria-controls="a-p1">Arquitetura de Patrimônio e Restauro</button></li>
+        <li role="presentation"><button role="tab" id="a-t2" aria-controls="a-p2">Gestão e Coordenação de Obras / BIM Management</button></li>
+        <li role="presentation"><button role="tab" id="a-t3" aria-controls="a-p3">Planejamento Urbano e Infraestrutura</button></li>
+        <li role="presentation"><button role="tab" id="a-t4" aria-controls="a-p4">Arquitetura de Edificações / Projetos Comerciais e Corporativos</button></li>
+        <li role="presentation"><button role="tab" id="a-t5" aria-controls="a-p5">Empreendedorismo e Projetos Autorais</button></li>
+      </ul>
+      <div class="detalhe">
+        <article role="tabpanel" id="a-p1" aria-labelledby="a-t1"><h3>Arquitetura de Patrimônio e Restauro</h3><p>Especializada na conservação, recuperação e restauração de edifícios históricos e patrimônios tombados.</p></article>
+        <article role="tabpanel" id="a-p2" aria-labelledby="a-t2" hidden><h3>Gestão e Coordenação de Obras / BIM Management</h3><p>Focada no gerenciamento de canteiros, controle de custos, prazos, equipes e modelagem de informação da construção (BIM).</p></article>
+        <article role="tabpanel" id="a-p3" aria-labelledby="a-t3" hidden><h3>Planejamento Urbano e Infraestrutura</h3><p>Elaboração de planos diretores, ordenamento de cidades, grandes projetos de mobilidade e infraestrutura pública.</p></article>
+        <article role="tabpanel" id="a-p4" aria-labelledby="a-t4" hidden><h3>Arquitetura de Edificações / Projetos Comerciais e Corporativos</h3><p>Projetos de grande porte para incorporadoras, hospitais, hotéis e edifícios empresariais.</p></article>
+        <article role="tabpanel" id="a-p5" aria-labelledby="a-t5" hidden><h3>Empreendedorismo e Projetos Autorais</h3><p>Sócios de escritórios consolidados ou arquitetos autônomos com marca própria no mercado de alto padrão.</p></article>
+        <svg class="desenho draw desenho-canto" viewBox="0 0 200 140" aria-hidden="true">
+          <path class="tr" d="M10 50L100 12L190 50Z" style="--d:0"/>
+          <path class="tr" d="M14 56H186" style="--d:.2"/>
+          <path class="tr" d="M34 56V120M70 56V120M130 56V120M166 56V120" style="--d:.4"/>
+          <path class="tr" d="M8 124H192M16 132H184" style="--d:.7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <a class="fonte" href="#fontes-2">Fontes desta seção</a>
+</section>
+
+<!-- 04 ÁREAS MAIS BEM REMUNERADAS NO FUTURO -->
+<section class="prancha t-papel" id="futuro" data-nome="Áreas mais bem remuneradas no futuro">
+  <div class="wrap">
+    <p class="tag">Prancha 04</p>
+    <h2 class="frase">Áreas mais bem remuneradas no futuro</h2>
+    <p class="lead">As áreas mais promissoras e bem remuneradas da arquitetura para os próximos anos:</p>
+    <div class="mestre" data-mestre>
+      <ul class="lista" role="tablist" aria-orientation="vertical" aria-label="Áreas mais bem remuneradas no futuro">
+        <li role="presentation"><button role="tab" id="f-t1" aria-controls="f-p1">Arquitetura Sustentável e Bioclimática</button></li>
+        <li role="presentation"><button role="tab" id="f-t2" aria-controls="f-p2">Tecnologia BIM Avançada e Arquitetura Digital</button></li>
+        <li role="presentation"><button role="tab" id="f-t3" aria-controls="f-p3">Cidades Inteligentes (Smart Cities) e Urbanismo Resiliente</button></li>
+        <li role="presentation"><button role="tab" id="f-t4" aria-controls="f-p4">Neuroarquitetura e Arquitetura de Saúde/Hospitalar</button></li>
+        <li role="presentation"><button role="tab" id="f-t5" aria-controls="f-p5">Construção Off-site e Modular</button></li>
+      </ul>
+      <div class="detalhe">
+        <article role="tabpanel" id="f-p1" aria-labelledby="f-t1"><h3>Arquitetura Sustentável e Bioclimática</h3><p>Focada em projetos com pegada de carbono zero, eficiência energética, uso de energias renováveis e certificações ambientais (como LEED).</p></article>
+        <article role="tabpanel" id="f-p2" aria-labelledby="f-t2" hidden><h3>Tecnologia BIM Avançada e Arquitetura Digital</h3><p>Integração de inteligência artificial, realidade aumentada, gêmeos digitais (digital twins) e gestão de dados complexos de construção.</p></article>
+        <article role="tabpanel" id="f-p3" aria-labelledby="f-t3" hidden><h3>Cidades Inteligentes (Smart Cities) e Urbanismo Resiliente</h3><p>Planejamento urbano adaptado a mudanças climáticas, mobilidade sustentável e infraestrutura de cidades conectadas.</p></article>
+        <article role="tabpanel" id="f-p4" aria-labelledby="f-t4" hidden><h3>Neuroarquitetura e Arquitetura de Saúde/Hospitalar</h3><p>Design focado no bem-estar mental e fisiológico dos usuários, impulsionado pela alta demanda em espaços de saúde e ambientes corporativos.</p></article>
+        <article role="tabpanel" id="f-p5" aria-labelledby="f-t5" hidden><h3>Construção Off-site e Modular</h3><p>Especialização em arquitetura industrializada, fabricação digital e impressão 3D para obras mais rápidas e econômicas.</p></article>
+        <svg class="desenho draw desenho-canto" viewBox="0 0 200 140" aria-hidden="true">
+          <path class="tr" d="M70 130V30H130V130" style="--d:0"/>
+          <path class="tr" d="M70 60H130M70 90H130M100 30V130" style="--d:.3"/>
+          <circle class="tr" cx="162" cy="30" r="13" style="--d:.5"/>
+          <path class="tr fino" d="M162 6V0M162 60V54M138 30H132M192 30H186M145 13L141 9M179 13L183 9" style="--d:.7"/>
+          <path class="tr" d="M20 130C20 94 40 76 66 76C66 108 46 130 20 130Z" style="--d:.8"/>
+          <path class="tr" d="M10 132H190" style="--d:.2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <a class="fonte" href="#fontes-3">Fontes desta seção</a>
+</section>
+
+<!-- 05 ÁREAS MENOS REMUNERADAS NO FUTURO -->
+<section class="prancha t-profundo" id="menos" data-nome="Áreas menos remuneradas no futuro">
+  <div class="wrap">
+    <p class="tag">Prancha 05</p>
+    <h2 class="frase">Áreas menos remuneradas no futuro</h2>
+    <p class="lead">As áreas com tendência a menor remuneração no futuro da arquitetura são aquelas altamente repetitivas, operacionais ou suscetíveis à automação direta por inteligência artificial e ferramentas generativas:</p>
+    <div class="mestre" data-mestre>
+      <ul class="lista" role="tablist" aria-orientation="vertical" aria-label="Áreas menos remuneradas no futuro">
+        <li role="presentation"><button role="tab" id="m-t1" aria-controls="m-p1">Desenho Técnico e Modelagem Básica (BIM/CAD Operacional)</button></li>
+        <li role="presentation"><button role="tab" id="m-t2" aria-controls="m-p2">Visualização Arquitetônica Tradicional (Render 3D Simples)</button></li>
+        <li role="presentation"><button role="tab" id="m-t3" aria-controls="m-p3">Arquitetura de Interiores Residencial de Pequeno Porte (Sem Especialização)</button></li>
+        <li role="presentation"><button role="tab" id="m-t4" aria-controls="m-p4">Projetos Padronizados e Repetitivos</button></li>
+        <li role="presentation"><button role="tab" id="m-t5" aria-controls="m-p5">Regularização de Imóveis e Tramitação Burocrática Simples</button></li>
+      </ul>
+      <div class="detalhe">
+        <article role="tabpanel" id="m-p1" aria-labelledby="m-t1"><h3>Desenho Técnico e Modelagem Básica (BIM/CAD Operacional)</h3><p>Funções focadas apenas na execução manual de desenhos técnicos, plantas e detalhamentos, que serão cada vez mais automatizados por IA generativa e softwares de código.</p></article>
+        <article role="tabpanel" id="m-p2" aria-labelledby="m-t2" hidden><h3>Visualização Arquitetônica Tradicional (Render 3D Simples)</h3><p>A criação de imagens 3D estáticas e renders básicos tende a perder valor econômico com o avanço de algoritmos capazes de gerar maquetes virtuais ultrarrealistas em segundos.</p></article>
+        <article role="tabpanel" id="m-p3" aria-labelledby="m-t3" hidden><h3>Arquitetura de Interiores Residencial de Pequeno Porte (Sem Especialização)</h3><p>Setor já saturado que enfrentará maior pressão de plataformas online de design padronizado, autodesign e ferramentas de decoração automatizadas para o consumidor final.</p></article>
+        <article role="tabpanel" id="m-p4" aria-labelledby="m-t4" hidden><h3>Projetos Padronizados e Repetitivos</h3><p>Design de layouts residenciais ou comerciais simples que não demandem soluções técnicas complexas, adaptação climática avançada ou consultoria autoral personalizada.</p></article>
+        <article role="tabpanel" id="m-p5" aria-labelledby="m-t5" hidden><h3>Regularização de Imóveis e Tramitação Burocrática Simples</h3><p>Tarefas administrativas e de aprovação documental que tendem a ser simplificadas e digitalizadas por plataformas governamentais e cidades inteligentes.</p></article>
+        <svg class="desenho draw desenho-canto" viewBox="0 0 200 140" aria-hidden="true">
+          <g id="casa-modelo">
+            <path class="tr" d="M10 60L30 42L50 60V90H10Z" style="--d:0"/>
+            <path class="tr" d="M24 90V72H36V90" style="--d:.1"/>
+          </g>
+          <g transform="translate(70 0)"><path class="tr" d="M10 60L30 42L50 60V90H10Z" style="--d:.3"/><path class="tr" d="M24 90V72H36V90" style="--d:.4"/></g>
+          <g transform="translate(140 0)"><path class="tr" d="M10 60L30 42L50 60V90H10Z" style="--d:.6"/><path class="tr" d="M24 90V72H36V90" style="--d:.7"/></g>
+          <path class="tr fino" d="M4 96H196" style="--d:.9"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <a class="fonte" href="#fontes-4">Fontes desta seção</a>
+</section>
+
+<!-- 06 INOVAÇÕES -->
+<section class="prancha t-papel" id="inovacoes" data-nome="Próximas inovações técnicas">
+  <div class="wrap duas inov">
+    <div>
+      <p class="tag">Prancha 06</p>
+      <h2 class="frase">Ideias das próximas inovações técnicas</h2>
+      <p class="lead">As principais tendências, inovações tecnológicas e caminhos que estão moldando o futuro da arquitetura concentram-se em áreas de alto valor agregado e alta complexidade:</p>
+    </div>
+
+    <div data-mestre data-carrossel>
+      <div class="carrossel" role="tablist" aria-label="Inovações">
+        <button class="card" role="tab" id="i-t1" aria-controls="i-p1">
+          <span class="cnt">01 / 05</span>
+          <svg class="desenho" viewBox="0 0 48 48" aria-hidden="true"><circle cx="10" cy="24" r="4"/><circle cx="24" cy="9" r="4"/><circle cx="24" cy="39" r="4"/><circle cx="38" cy="24" r="4"/><path d="M13 21L21 12M13 27L21 36M27 12L35 21M27 36L35 27M14 24H34"/></svg>
+          <span class="nome">Inteligência Artificial e Design Generativo</span>
+        </button>
+        <button class="card" role="tab" id="i-t2" aria-controls="i-p2">
+          <span class="cnt">02 / 05</span>
+          <svg class="desenho" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 18 22 8 40 8C40 26 30 38 10 38Z"/><path d="M10 38L28 20"/><circle cx="34" cy="38" r="3"/><circle cx="40" cy="30" r="2"/></svg>
+          <span class="nome">Materiais Vivos, Inteligentes e Descarbonização</span>
+        </button>
+        <button class="card" role="tab" id="i-t3" aria-controls="i-p3">
+          <span class="cnt">03 / 05</span>
+          <svg class="desenho" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 42H42V30H6ZM24 30V42M6 30V18H24V30M24 30V18H42V30M15 18V8H33V18"/></svg>
+          <span class="nome">Industrialização e Fabricação Digital</span>
+        </button>
+        <button class="card" role="tab" id="i-t4" aria-controls="i-p4">
+          <span class="cnt">04 / 05</span>
+          <svg class="desenho" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="5"/><path d="M14 24A10 10 0 0 1 24 14M34 24A10 10 0 0 1 24 34M8 24A16 16 0 0 1 24 8M40 24A16 16 0 0 1 24 40"/></svg>
+          <span class="nome">Neuroarquitetura Preditiva e Espaços Dinâmicos</span>
+        </button>
+        <button class="card" role="tab" id="i-t5" aria-controls="i-p5">
+          <span class="cnt">05 / 05</span>
+          <svg class="desenho" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 42H44M8 42V22H18V42M18 42V8H30V42M30 42V26H40V42M22 14H26M22 22H26M22 30H26"/></svg>
+          <span class="nome">Urbanismo Conectado (Smart &amp; Resilient Cities)</span>
+        </button>
+      </div>
+
+      <div class="rolo" role="tabpanel" id="i-p1" aria-labelledby="i-t1">
+        <div><h4>Projetos Preditivos</h4><p>A IA deixa de apenas criar imagens 3D para gerar centenas de opções de layout otimizadas para iluminação natural, conforto térmico, eficiência estrutural e ventilação em poucos minutos.</p></div>
+        <div><h4>Gêmeos Digitais (Digital Twins)</h4><p>Criação de réplicas virtuais exatas de edifícios e cidades integradas por sensores. O modelo virtual prevê falhas de manutenção, consumo de energia e fluxo de pessoas em tempo real antes ou durante a ocupação.</p></div>
+      </div>
+      <div class="rolo" role="tabpanel" id="i-p2" aria-labelledby="i-t2" hidden>
+        <div><h4>Materiais Regenerativos</h4><p>Concretos auto-regenerativos (que utilizam bactérias para fechar as próprias fissuras), tijolos biológicos e tintas que absorvem poluição.</p></div>
+        <div><h4>Captura de Carbono e Bio-arquitetura</h4><p>Materiais que capturam CO₂ da atmosfera durante o ciclo de vida da edificação e integração profunda de ecossistemas vivos com automação de manutenção em fachadas e coberturas (Biofilia 2.0).</p></div>
+        <div><h4>Vidros Fotovoltaicos Transparentes</h4><p>Janelas capazes de gerar energia solar limpa sem perder a transparência ou alterar o apelo estético do projeto.</p></div>
+      </div>
+      <div class="rolo" role="tabpanel" id="i-p3" aria-labelledby="i-t3" hidden>
+        <div><h4>Construção Off-site e Modular</h4><p>Montagem de edifícios com módulos tridimensionais pré-fabricados em ambiente fabril robótico, reduzindo o tempo de canteiro de obras em até 50% e eliminando quase 100% dos resíduos.</p></div>
+        <div><h4>Impressão 3D em Larga Escala</h4><p>Construção automatizada de casas, estruturas e peças complexas utilizando argila local, concreto de baixo carbono ou polímeros reciclados diretamente no local da obra.</p></div>
+      </div>
+      <div class="rolo" role="tabpanel" id="i-p4" aria-labelledby="i-t4" hidden>
+        <div><h4>Design Focado na Saúde Mental</h4><p>Uso de sensores para medir respostas biológicas (estresse, batimentos cardíacos, foco) e adaptar automaticamente a iluminação circadiana, a acústica e a temperatura para otimizar a saúde dos ocupantes.</p></div>
+        <div><h4>Arquitetura Adaptativa e Flexível</h4><p>Ambientes com divisórias motorizadas automatizadas por sensores que alteram a configuração e a função dos cômodos ao longo do dia.</p></div>
+      </div>
+      <div class="rolo" role="tabpanel" id="i-p5" aria-labelledby="i-t5" hidden>
+        <div><h4>Cidades Responsivas e IoT</h4><p>Infraestrutura urbana onde praças, vias públicas e edifícios trocam dados em tempo real para gerenciar o tráfego, prevenir enchentes e gerir o consumo de água e resíduos de forma autônoma.</p></div>
+        <div><h4>Simulações de Resiliência Climática</h4><p>Testes virtuais do comportamento das cidades contra ondas de calor extremo, tempestades e elevação do nível do mar antes da execução física.</p></div>
+      </div>
+    </div>
+  </div>
+  <a class="fonte" href="#fontes-5">Fontes desta seção</a>
+</section>
+
+<!-- 07 VESTIBULARES -->
+<section class="prancha t-prancha" id="vestibulares" data-nome="Vestibulares para Arquitetura">
+  <div class="wrap">
+    <p class="tag">Prancha 07</p>
+    <h2 class="frase">Vestibulares para cursar Arquitetura</h2>
+    <p class="lead">Os vestibulares mais renomados para cursar Arquitetura no Brasil são:</p>
+    <ul class="cards-vest">
+      <li><h3>USP (FUVEST)</h3><p>Dá acesso à FAU (São Paulo) e ao IAU (São Carlos), referências no país.</p></li>
+      <li><h3>UNICAMP</h3><p>Vestibular próprio com grande foco técnico e de inovação.</p></li>
+      <li><h3>ENEM / SISU</h3><p>Dá acesso às principais universidades federais (como UFMG, UFRJ, UFRGS, UFPR e UnB).</p></li>
+      <li><h3>Mackenzie e Escola da Cidade (Privadas)</h3><p>Instituições paulistas de altíssimo prestígio no mercado.</p></li>
+    </ul>
+  </div>
+  <a class="fonte" href="#fontes-6">Fontes desta seção</a>
+</section>
+
+<!-- 08 MÍDIAS SOCIAIS -->
+<section class="prancha t-papel" id="midias" data-nome="Regulamentação das mídias sociais">
+  <div class="wrap duas">
+    <div>
+      <p class="tag">Prancha 08</p>
+      <h2 class="frase">Regulamentação do uso das mídias sociais</h2>
+      <p class="lead">A regulamentação das redes sociais é a criação de leis para deixar plataformas como Instagram e TikTok mais seguras. Ela busca combater golpes, fake news e discursos de ódio, além de proteger crianças e adolescentes na internet. O objetivo é fazer com que as empresas tirem conteúdos criminosos do ar mais rápido, sem prejudicar a liberdade de expressão dos usuários.</p>
+      <ul class="pontos-chave">
+        <li>Combater golpes, fake news e discursos de ódio</li>
+        <li>Proteger crianças e adolescentes na internet</li>
+        <li>Tirar conteúdos criminosos do ar mais rápido, sem prejudicar a liberdade de expressão</li>
+      </ul>
+    </div>
+    <svg class="desenho draw escudo" viewBox="0 0 200 160" role="img" aria-label="Desenho de um escudo com sinal de verificação">
+      <path class="tr" d="M100 10L150 28V70C150 98 128 118 100 130C72 118 50 98 50 70V28Z" style="--d:0"/>
+      <path class="tr" d="M78 70l16 16 30-34" style="--d:.7"/>
+      <path class="tr fino" d="M14 40H44V64H30L22 72V64H14Z" style="--d:1"/>
+      <path class="tr fino" d="M186 100H156V124H170L178 132V124H186Z" style="--d:1.2"/>
+    </svg>
+  </div>
+  <a class="fonte" href="#fontes-7">Fontes desta seção</a>
+</section>
+
+<!-- 09 FONTES -->
+<section class="prancha t-profundo" id="fontes" data-nome="Fontes">
+  <div class="wrap">
+    <p class="tag">Prancha 09</p>
+    <h2 class="frase">Fontes</h2>
+    <div class="fontes-grid">
+      <div>
+        <h3 id="fontes-1">1. O que é Arquitetura e por que ela é importante?</h3>
+        <ul>
+          <li><a href="https://transparencia.caubr.gov.br/resolucao51/" target="_blank" rel="noopener">CAU/BR – Áreas de atuação</a></li>
+          <li><a href="https://www.caubr.gov.br/wp-content/uploads/2015/12/LIVRO-Manual_Arquiteto_2015-INTERATIVO1.pdf" target="_blank" rel="noopener">CAU/BR – Manual do Arquiteto e Urbanista</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-2">2. Áreas mais remuneradas atualmente</h3>
+        <ul>
+          <li><a href="https://www.salario.com.br/profissao/arquiteto-urbanista-cbo-214125/" target="_blank" rel="noopener">Portal Salário – Arquiteto e Urbanista</a></li>
+          <li><a href="https://www.salario.com.br/profissao/arquiteto-de-edificacoes-cbo-214105/" target="_blank" rel="noopener">Portal Salário – Arquiteto de Edificações</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-3">3. Áreas mais bem remuneradas no futuro</h3>
+        <ul>
+          <li><a href="https://www.riba.org/media/a5xdylks/future-business-of-architecture-report-2025-final.pdf" target="_blank" rel="noopener">RIBA – Future Business of Architecture 2025</a></li>
+          <li><a href="https://www.autodesk.com/design-make/research/state-of-design-and-make-2025/industry" target="_blank" rel="noopener">Autodesk – State of Design &amp; Make 2025</a></li>
+          <li><a href="https://www.gov.br/mme/pt-br/assuntos/ee/publicacoes-e-estudos/edificacoes" target="_blank" rel="noopener">Ministério de Minas e Energia – Edificações</a></li>
+          <li><a href="https://build-up.ec.europa.eu/en/resources-and-tools/publications/sustainable-power-digital-technologies-modular-construction" target="_blank" rel="noopener">União Europeia – Construção modular e tecnologias digitais</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-4">4. Áreas menos remuneradas no futuro</h3>
+        <ul>
+          <li><a href="https://www.riba.org/media/uqmlay5m/riba-ai-report-2025-final.pdf" target="_blank" rel="noopener">RIBA – AI Report 2025</a></li>
+          <li><a href="https://www.riba.org/media/a5xdylks/future-business-of-architecture-report-2025-final.pdf" target="_blank" rel="noopener">RIBA – Future Business of Architecture 2025</a></li>
+          <li><a href="https://www.autodesk.com/design-make/research/state-of-design-and-make-2025/industry" target="_blank" rel="noopener">Autodesk – State of Design &amp; Make 2025</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-5">5. Ideias das próximas inovações técnicas</h3>
+        <ul>
+          <li><a href="https://www.riba.org/media/uqmlay5m/riba-ai-report-2025-final.pdf" target="_blank" rel="noopener">RIBA – AI Report 2025</a></li>
+          <li><a href="https://www.riba.org/media/a5xdylks/future-business-of-architecture-report-2025-final.pdf" target="_blank" rel="noopener">RIBA – Future Business of Architecture 2025</a></li>
+          <li><a href="https://worldgbc.org/" target="_blank" rel="noopener">World Green Building Council</a></li>
+          <li><a href="https://www.gov.br/mme/pt-br/assuntos/ee/publicacoes-e-estudos/edificacoes" target="_blank" rel="noopener">Ministério de Minas e Energia – Edificações</a></li>
+          <li><a href="https://build-up.ec.europa.eu/en/resources-and-tools/publications/sustainable-power-digital-technologies-modular-construction" target="_blank" rel="noopener">União Europeia – Construção modular</a></li>
+          <li><a href="https://www.autodesk.com/design-make/research/state-of-design-and-make-2025/industry" target="_blank" rel="noopener">Autodesk – State of Design &amp; Make 2025</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-6">6. Vestibulares mais renomados para cursar Arquitetura no Brasil</h3>
+        <ul>
+          <li><a href="https://www.fau.usp.br/ensino/graduacao/" target="_blank" rel="noopener">USP – FAU</a></li>
+          <li><a href="https://www.iau.usp.br/graduacao/" target="_blank" rel="noopener">USP – IAU São Carlos</a></li>
+          <li><a href="https://www.fecfau.unicamp.br/graduacao/vestibulando/o-vestibular/" target="_blank" rel="noopener">UNICAMP – Vestibular</a></li>
+          <li><a href="https://www.mackenzie.br/processos-seletivos/vestibular-graduacao/sao-paulo-higienopolis/" target="_blank" rel="noopener">Mackenzie – Processos seletivos</a></li>
+          <li><a href="https://escoladacidade.edu.br/graduacao/" target="_blank" rel="noopener">Escola da Cidade – Graduação</a></li>
+          <li><a href="https://www.gov.br/mec/pt-br/sisu" target="_blank" rel="noopener">MEC – SISU</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 id="fontes-7">7. Regulamentação do uso das mídias sociais</h3>
+        <ul>
+          <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm" target="_blank" rel="noopener">Planalto – Lei nº 15.211/2025 (ECA Digital)</a></li>
+          <li><a href="https://www.gov.br/anpd/pt-br/assuntos/eca-digital" target="_blank" rel="noopener">ANPD – ECA Digital</a></li>
+          <li><a href="https://www.gov.br/mdh/pt-br/assuntos/noticias/2026/defeso-eleitoral/agosto/eca-digital-conheca-as-regras-de-protecao-de-criancas-e-adolescentes-no-ambiente-online" target="_blank" rel="noopener">Ministério dos Direitos Humanos – ECA Digital</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="rodape">Laura Tertuliano, 1º ano do EM, Escola Franciscana Imaculada Conceição</p>
+  </div>
+</section>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
