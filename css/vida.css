@@ -1,0 +1,91 @@
+/* ==========================================================
+   Vida: abertura da capa + efeitos de scroll.
+   Tudo vale só com html.anim (JS ligado e movimento permitido).
+   Para desligar: remova o link deste arquivo e o js/vida.js.
+   ========================================================== */
+
+@property --r { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+
+html:not(.anim) .progresso { display: none; }
+
+/* ---------- barra de progresso ---------- */
+.progresso { position: fixed; z-index: 70; left: 0; right: 0; top: 0; height: 4px; background: rgba(11, 21, 51, .85); pointer-events: none; }
+.progresso span { display: block; height: 100%; background: #9DBEFF; transform-origin: left center; transform: scaleX(0); will-change: transform; }
+
+/* ==========================================================
+   ABERTURA DA CAPA (ordem de leitura)
+   0.0s grade  ->  0.15s compasso  ->  0.5s título  ->  0.7s prédios
+   1.0s subtítulo  ->  1.35s ficha  ->  1.95s botão  ->  2.2s menus
+   ========================================================== */
+
+/* grade de projeto se revela a partir do centro do desenho */
+.anim .capa::before {
+  --r: 0%;
+  -webkit-mask-image: radial-gradient(circle at 72% 52%, #000 var(--r), transparent calc(var(--r) + 22%));
+  mask-image: radial-gradient(circle at 72% 52%, #000 var(--r), transparent calc(var(--r) + 22%));
+}
+.anim.abre .capa::before { --r: 135%; transition: --r 2.8s cubic-bezier(.25, .6, .2, 1); }
+
+/* título: palavras sobem pela máscara (sobrescreve a regra de main/style.css) */
+html.anim:not(.abre) .capa .w > span { transform: translateY(108%); transition: none; }
+html.anim.abre .capa .w > span { transform: none; transition: transform 1.2s var(--ease) calc(var(--k, 0) * .09s + .5s); }
+
+/* desenho: compasso primeiro, depois prédios */
+html.anim:not(.abre) .capa .draw .tr { stroke-dashoffset: 1; transition: none; }
+html.anim.abre .capa .draw .tr {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.6s var(--ease) calc(var(--d, 0) * .6s + var(--t0, .7s));
+}
+.anim .capa-desenho svg .tr { --t0: .15s; }
+html.anim:not(.abre) .capa .draw text { opacity: 0; transition: none; }
+html.anim.abre .capa .draw text { opacity: 1; transition: opacity .9s ease 2.3s; }
+
+/* textos de apoio entram em sequência */
+.anim .capa .tag { --h: .25s; }
+.anim .capa .sub { --h: 1s; }
+.anim .capa .ficha { --h: 1.35s; clip-path: inset(0 0 100% 0); }
+.anim .capa .entrar { --h: 1.95s; }
+.anim .capa .dica { --h: 2.4s; }
+.anim .capa :is(.tag, .sub, .ficha p, .entrar, .dica) { opacity: 0; transform: translate3d(0, 22px, 0); }
+.anim.abre .capa :is(.tag, .sub, .ficha p, .entrar, .dica) {
+  opacity: 1; transform: none;
+  transition: opacity .9s ease var(--h, 0s), transform 1s var(--ease) var(--h, 0s), background .2s;
+}
+.anim.abre .capa .ficha { clip-path: inset(0 0 0 0); transition: clip-path 1s var(--ease) var(--h, 0s); }
+
+/* barra superior e pontos entram por último */
+.anim:not(.abre) .topo, .anim:not(.abre) .pontos { opacity: 0; }
+.anim.abre .topo, .anim.abre .pontos { opacity: 1; transition: opacity 1s ease 2.2s; }
+
+/* ao rolar: título e desenho se afastam em velocidades diferentes; a capa esmaece */
+.anim .capa #titulo { transform: translate3d(0, calc(var(--py, 0) * .22px), 0); }
+.anim .capa .capa-desenho { transform: translate3d(var(--mx, 0px), calc(var(--py, 0) * -.1px + var(--my, 0px)), 0); }
+.anim .capa .wrap { opacity: calc(1 - var(--py, 0) * .0011); }
+
+/* ==========================================================
+   EFEITOS DE SCROLL NAS DEMAIS SEÇÕES
+   ========================================================== */
+
+/* títulos: palavras sobem por máscara */
+.anim .prancha:not(.capa) .frase .wm { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.anim .prancha:not(.capa) .frase .w2 { display: inline-block; transform: translateY(112%); transition: transform 1.05s var(--ease) calc(var(--k, 0) * .05s + .05s); }
+.anim .prancha.in .frase .w2 { transform: none; }
+
+/* conteúdo: aparece em sequência depois do título */
+.anim .prancha:not(.capa) :is(.tag, .lead, .beneficios li, .pontos-chave li, .mestre .lista li, .mestre .detalhe, .carrossel, .rolo, .cards-vest li, .fontes-grid > div, .rodape, .fonte) {
+  opacity: 0; transform: translate3d(0, 28px, 0);
+  transition: opacity .9s ease calc(var(--i, 0) * .08s + .3s), transform 1s var(--ease) calc(var(--i, 0) * .08s + .3s);
+}
+.anim .prancha.in:not(.capa) :is(.tag, .lead, .beneficios li, .pontos-chave li, .mestre .lista li, .mestre .detalhe, .carrossel, .rolo, .cards-vest li, .fontes-grid > div, .rodape, .fonte) { opacity: 1; transform: none; }
+
+/* título escondido até o JS separar as palavras (evita piscar) */
+.anim .prancha:not(.capa) .frase:not([aria-label]) { visibility: hidden; }
+
+/* desenhos controlados pelo scroll (o JS escreve o traço); sem atraso de transição */
+.anim .prancha:not(.capa) .draw .tr { transition: none; }
+.anim .prancha:not(.capa) .draw text { transition: none; }
+.anim .prancha:not(.capa) .planta, .anim .prancha:not(.capa) .escudo { will-change: transform; }
+
+/* ==========================================================
+   Movimento reduzido: nada disto é ativado (o JS não liga .anim)
+   ========================================================== */
