@@ -446,3 +446,15 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
 }
 @keyframes tracar { to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .js #atuais .area-desenho .tr { stroke-dashoffset: 0; animation: none; } }
+
+/* ==========================================================
+   LEGIBILIDADE (rótulos pequenos): mais contraste e tamanho
+   ========================================================== */
+.t-profundo, .t-prancha { --laranja: #FFB27A; }     /* laranja claro: contraste ~4:1 sobre o azul (o laranja puro tinha 2,6:1) */
+.tag { font-size: clamp(.8rem, 2.1vh, 1.3rem); font-weight: 500; }
+.fonte { font-size: clamp(.85rem, 2.1vh, 1.3rem); font-weight: 500; }
+.marca, .menu-btn { font-size: clamp(.8rem, 1.8vh, 1.05rem); }
+:is(#atuais, #futuro, #menos) .lista button::before { font-size: .82em; font-weight: 700; }
+:is(#atuais, #futuro, #menos) .detalhe article::before { font-size: clamp(.85rem, 2.1vh, 1.35rem); font-weight: 700; }
+:is(#atuais, #futuro, #menos) .lista button::before,
+.anim :is(#atuais, #futuro, #menos) .lista button[aria-selected="true"]::before { font-size: .82em; font-weight: 700; }
