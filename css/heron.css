@@ -14,7 +14,7 @@
   display: grid; position: fixed; inset: 0; z-index: 200;
   background: var(--azul-profundo); color: var(--papel);
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   padding: clamp(14px, 2.4vw, 32px);
   font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase;
   transition: transform 1s cubic-bezier(.76, 0, .24, 1);
@@ -31,18 +31,18 @@
 .pre > * { position: relative; }
 .pre-topo { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 1rem; color: var(--azul-traco); }
 .pre-topo b { font-weight: 500; color: var(--papel); }
-.pre-log { grid-column: 2; grid-row: 2; align-self: center; justify-self: end; width: min(360px, 100%); list-style: none; padding: 0; display: grid; gap: .35rem; }
+.pre-log { grid-column: 2; grid-row: 1; align-self: center; justify-self: end; width: min(360px, 100%); list-style: none; padding: 0; display: grid; gap: .35rem; }
 .pre-log li { display: flex; gap: .9rem; opacity: .25; transition: opacity .25s, color .25s; }
 .pre-log li span { color: var(--azul-traco); }
 .pre-log li.on { opacity: 1; }
 .pre-log li.on::after { content: "OK"; margin-left: auto; color: var(--laranja); }
 .pre-num {
-  grid-column: 1; grid-row: 3;
+  grid-column: 1; grid-row: 2;
   font-family: var(--serif); text-transform: none; letter-spacing: -.03em;
   font-size: clamp(5.5rem, 20vw, 17rem); line-height: .8; margin-left: -.04em;
 }
 .pre-num small { font-size: .35em; letter-spacing: 0; }
-.pre-barra { grid-column: 1 / -1; grid-row: 3; align-self: end; height: 2px; background: rgba(157, 190, 255, .25); }
+.pre-barra { grid-column: 1 / -1; grid-row: 2; align-self: end; height: 2px; background: rgba(157, 190, 255, .25); }
 .pre-barra i { display: block; height: 100%; background: var(--laranja); transform-origin: left; transform: scaleX(0); }
 .pre-num { padding-bottom: .6rem; }
 html.pre-ativo { overflow: hidden; }
