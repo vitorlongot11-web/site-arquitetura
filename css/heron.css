@@ -529,3 +529,32 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
   #inovacoes .rolo { gap: .4rem 1rem; padding: .6rem .9rem; }
 }
 #inovacoes .rolo h4 { font-family: var(--sans); font-weight: 700; color: var(--fg); line-height: 1.15; }
+
+/* ==========================================================
+   PRANCHA 05: painel da direita MAIOR e com letra grande
+   (legível do fundo da sala). Lista mais estreita, painel largo.
+   ========================================================== */
+#inovacoes .inov { grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr); }
+#inovacoes .card .nome { font-size: clamp(.9rem, 2.3vh, 1.65rem); }
+#inovacoes .rolo-topo h3 { font-size: clamp(1.3rem, min(2.8vw, 4.7vh), 3.4rem); }
+#inovacoes .rolo h4 { font-size: clamp(1.05rem, 3vh, 2.2rem); }
+#inovacoes .rolo p { font-size: clamp(.95rem, 2.65vh, 2.1rem); line-height: 1.32; }
+#inovacoes .area-desenho { width: clamp(100px, min(12vw, 27vh), 250px); }
+#inovacoes .rolo { grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+#inovacoes .lead { font-size: clamp(.9rem, 2.2vh, 1.8rem); }
+@media (max-height: 700px) {
+  #inovacoes .rolo p { font-size: clamp(.8rem, 2.35vh, 1.2rem); line-height: 1.28; }
+  #inovacoes .rolo h4 { font-size: clamp(.9rem, 2.7vh, 1.3rem); }
+}
+
+/* colunas do painel: 2 subtópicos = 2 colunas largas; 3 subtópicos = 3 colunas */
+#inovacoes .rolo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#inovacoes .rolo:has(> div:nth-of-type(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#inovacoes .rolo:has(> div:nth-of-type(3)) p { font-size: clamp(.9rem, 2.4vh, 1.9rem); }
+#inovacoes .rolo:has(> div:nth-of-type(3)) h4 { font-size: clamp(1rem, 2.75vh, 2rem); }
+@media (max-height: 700px) {
+  #inovacoes .rolo p { font-size: clamp(.8rem, 2.55vh, 1.3rem); }
+  #inovacoes .rolo h4 { font-size: clamp(.9rem, 2.9vh, 1.4rem); }
+  #inovacoes .rolo:has(> div:nth-of-type(3)) p { font-size: clamp(.8rem, 2.3vh, 1.2rem); }
+  #inovacoes .rolo:has(> div:nth-of-type(3)) h4 { font-size: clamp(.9rem, 2.6vh, 1.3rem); }
+}
