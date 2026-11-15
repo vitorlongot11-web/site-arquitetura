@@ -15,7 +15,7 @@
   const VELOCIDADE = 1.3;                 /* 10 s de vídeo viram ~7,7 s de tela de carregamento */
   let acabou = false;
 
-  const LEITURA = 4500;                   /* tempo parado em 100% para ler o texto (ms) */
+  const LEITURA = 6500;                   /* tempo parado em 100% para ler o texto (ms) */
   let espera = 0, fechou = false;
   function fechar() {
     if (fechou) return; fechou = true;
