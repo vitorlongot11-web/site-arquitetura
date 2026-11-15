@@ -42,7 +42,7 @@ html.pre-ativo { overflow: hidden; }
 html.pre-ativo body { overflow: hidden; }
 
 
-.pre .pre-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: #F2ECDD; }
+.pre .pre-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; background: #F2ECDD; }
 .anim .pre { background: #F2ECDD; }
 .anim .pre::before { display: none; }
 .pre .pre-num {
