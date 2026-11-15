@@ -614,3 +614,5 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
   #vestibulares .cards-vest p { font-size: clamp(.78rem, 2.65vh, 1.2rem); }
   #vestibulares .cards-vest li { grid-template-columns: 110px minmax(0, 1fr); }
 }
+/* Prancha 06: título dos cartões com contorno mais leve (antes .7px ficou pesado) */
+#vestibulares .cards-vest h3 { -webkit-text-stroke: .25px #fff; letter-spacing: 0; }
