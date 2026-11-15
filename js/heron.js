@@ -11,48 +11,38 @@
   root.classList.add('pre-ativo');
   const num = pre.querySelector('.pre-n');
   const barra = pre.querySelector('.pre-barra i');
-  const DUR = 4600;                        /* tempo em que a casa é construída */
-  const t0 = performance.now();
+  const vid = document.getElementById('pre-video');
+  const VELOCIDADE = 1.3;                 /* 10 s de vídeo viram ~7,7 s de tela de carregamento */
   let acabou = false;
-  const clamp = (v) => Math.min(1, Math.max(0, v));
-  const ease = (t) => 0.5 - Math.cos(Math.PI * t) / 2;
-
-  /* a casa: cada grupo [data-a, data-b] é desenhado entre esses pontos do progresso */
-  const grupos = [...pre.querySelectorAll('g[data-a]')].map((g) => ({
-    a: parseFloat(g.dataset.a), b: parseFloat(g.dataset.b),
-    linhas: [...g.querySelectorAll('.l')], fundos: [...g.querySelectorAll('.f')],
-  }));
-  grupos.forEach((g) => g.linhas.forEach((l) => l.setAttribute('pathLength', '1')));
-  function casa(p) {
-    grupos.forEach((g) => {
-      const t = clamp((p - g.a) / (g.b - g.a));
-      g.linhas.forEach((l) => { l.style.strokeDashoffset = (1 - clamp(t * 1.6)).toFixed(3); });
-      g.fundos.forEach((f) => { f.style.opacity = clamp((t - 0.3) * 1.8).toFixed(3); });
-    });
-  }
 
   function sair() {
     if (acabou) return; acabou = true;
     num.textContent = '100';
     barra.style.transform = 'scaleX(1)';
-    casa(1);
     setTimeout(() => {
       pre.classList.add('fim');
       root.classList.remove('pre-ativo');
       setTimeout(fim, 650);               /* capa começa a abrir quando a cortina já subiu */
-      setTimeout(() => pre.classList.add('some'), 1200);
-    }, 700);                              /* casa pronta fica visível um instante */
+      setTimeout(() => { pre.classList.add('some'); vid.removeAttribute('src'); vid.load(); }, 1200);
+    }, 900);                              /* casa pronta fica visível um instante */
   }
-  (function passo(agora) {
+
+  /* o contador acompanha o tempo do vídeo: 100% = última imagem da obra */
+  function atualiza() {
     if (acabou) return;
-    const t = Math.min(1, (agora - t0) / DUR);
-    const e = ease(t);
-    num.textContent = String(Math.round(e * 100)).padStart(2, '0');
-    barra.style.transform = `scaleX(${e})`;
-    casa(e);
-    if (t < 1) requestAnimationFrame(passo); else sair();
-  })(t0);
-  setTimeout(sair, DUR + 2500);           /* rede de segurança */
+    const dur = vid.duration || 0;
+    const p = dur ? Math.min(1, vid.currentTime / (dur - 0.05)) : 0;
+    num.textContent = String(Math.round(p * 100)).padStart(2, '0');
+    barra.style.transform = `scaleX(${p})`;
+    if (p >= 0.995 || vid.ended) sair(); else requestAnimationFrame(atualiza);
+  }
+  vid.playbackRate = VELOCIDADE;
+  vid.addEventListener('ended', sair);
+  vid.addEventListener('error', () => setTimeout(sair, 600));   /* sem vídeo: segue para o site */
+  const tocar = vid.play();
+  if (tocar && tocar.catch) tocar.catch(() => setTimeout(sair, 600));
+  requestAnimationFrame(atualiza);
+  setTimeout(sair, 16000);                /* rede de segurança (internet lenta) */
 
   /* ---------- 2. Rótulos que se embaralham ao entrar na tela ---------- */
   const GLIFOS = '/\\|_-+<>[]0123456789';
