@@ -167,7 +167,9 @@ html.pre-ativo body { overflow: hidden; }
 .anim .lista button[aria-selected="true"]::before { background: var(--laranja); border-color: var(--laranja); }
 
 @media (max-width: 900px) {
-  @media (prefers-reduced-motion: reduce) {
+  .anim .pre { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
   .pre, .moldura, .faixa { display: none !important; }
 }
 
@@ -347,3 +349,15 @@ html.anim .croqui img.linha { mix-blend-mode: multiply; object-fit: cover; }
 html.anim .croqui img.cor { transition: --p 5s cubic-bezier(.45, .05, .25, 1) 1.7s; }
 html.anim #oque.mostra .croqui img { --p: 100%; }
 html.anim #oque.instante .croqui img { transition: none; }
+
+/* ==========================================================
+   LEGIBILIDADE NO PROJETOR: letra mais forte, maior e com
+   mais contraste em todo o site (projetor "lava" cores claras).
+   ========================================================== */
+body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.55rem); }
+.t-papel    { --fg2: #14224A; }                 /* texto corrido sobre papel: azul bem escuro */
+.t-profundo { --fg2: #E8F0FF; }
+.t-prancha  { --fg2: #FFFFFF; }
+#oque .lead { font-size: clamp(1rem, 2.9vh, 2.1rem); font-weight: 500; line-height: 1.45; }
+.detalhe p, .rolo p, .cards-vest p, .pontos-chave li { font-weight: 500; }
+.lista button { font-weight: 500; }
