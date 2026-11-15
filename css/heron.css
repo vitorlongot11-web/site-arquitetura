@@ -618,3 +618,5 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
 #vestibulares .cards-vest h3 { -webkit-text-stroke: .25px #fff; letter-spacing: 0; }
 /* Prancha 06: título dos cartões sem contorno (peso normal da serifa) */
 #vestibulares .cards-vest h3 { -webkit-text-stroke: 0; }
+/* Prancha 06: descrição dos cartões em peso médio (era negrito) */
+#vestibulares .cards-vest p { font-weight: 500; }
