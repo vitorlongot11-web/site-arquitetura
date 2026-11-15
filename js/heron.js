@@ -15,17 +15,26 @@
   const VELOCIDADE = 1.3;                 /* 10 s de vídeo viram ~7,7 s de tela de carregamento */
   let acabou = false;
 
+  const LEITURA = 4500;                   /* tempo parado em 100% para ler o texto (ms) */
+  let espera = 0, fechou = false;
+  function fechar() {
+    if (fechou) return; fechou = true;
+    clearTimeout(espera);
+    pre.classList.add('fim');
+    root.classList.remove('pre-ativo');
+    setTimeout(fim, 650);                 /* capa começa a abrir quando a cortina já subiu */
+    setTimeout(() => { pre.classList.add('some'); vid.removeAttribute('src'); vid.load(); }, 1200);
+  }
   function sair() {
     if (acabou) return; acabou = true;
     num.textContent = '100';
     barra.style.transform = 'scaleX(1)';
-    setTimeout(() => {
-      pre.classList.add('fim');
-      root.classList.remove('pre-ativo');
-      setTimeout(fim, 650);               /* capa começa a abrir quando a cortina já subiu */
-      setTimeout(() => { pre.classList.add('some'); vid.removeAttribute('src'); vid.load(); }, 1200);
-    }, 900);                              /* casa pronta fica visível um instante */
+    pre.classList.add('info');            /* garante o texto mesmo se o vídeo pulou etapas */
+    espera = setTimeout(fechar, LEITURA);
   }
+  /* clique, Enter, espaço ou seta: pula a espera depois do 100% */
+  pre.addEventListener('click', () => { if (acabou) fechar(); });
+  addEventListener('keydown', (e) => { if (acabou && !fechou && /^(Enter| |ArrowRight|ArrowDown)$/.test(e.key)) fechar(); });
 
   /* o contador acompanha o tempo do vídeo: 100% = última imagem da obra */
   function atualiza() {
@@ -34,6 +43,7 @@
     const p = dur ? Math.min(1, vid.currentTime / (dur - 0.05)) : 0;
     num.textContent = String(Math.round(p * 100)).padStart(2, '0');
     barra.style.transform = `scaleX(${p})`;
+    if (p >= 0.8) pre.classList.add('info');
     if (p >= 0.995 || vid.ended) sair(); else requestAnimationFrame(atualiza);
   }
   vid.playbackRate = VELOCIDADE;

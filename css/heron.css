@@ -52,6 +52,27 @@ html.pre-ativo body { overflow: hidden; }
   padding: .12em .32em .2em; font-size: clamp(3.6rem, 9vw, 8.5rem); line-height: .9;
   box-shadow: 0 10px 40px rgba(10, 33, 102, .35);
 }
+/* texto com as informações do trabalho: entra aos 80% */
+.pre-veu { position: absolute; inset: 0; background: rgba(242, 236, 221, .88); opacity: 0; transition: opacity .9s ease; pointer-events: none; }
+.pre.info .pre-veu { opacity: 1; }
+.pre .pre-info {
+  position: absolute; left: clamp(28px, 7vw, 120px); top: 50%; transform: translateY(-54%);
+  max-width: min(980px, 86vw); color: var(--azul-profundo);
+  text-transform: none; letter-spacing: normal;
+}
+.pre .pre-num { transition: left .8s var(--ease), right .8s var(--ease); }
+.pre.info .pre-num { left: auto; right: clamp(14px, 2.4vw, 36px); }
+.pre-info > * { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .9s var(--ease); }
+.pre.info .pre-info > * { opacity: 1; transform: none; }
+.pre.info .pre-info > :nth-child(2) { transition-delay: .15s; }
+.pre.info .pre-info > :nth-child(3) { transition-delay: .35s; }
+.pre.info .pre-info > :nth-child(4) { transition-delay: .5s; }
+.pre.info .pre-info > :nth-child(5) { transition-delay: .8s; }
+.pre-info h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.4rem, 9vw, 9rem); line-height: .95; letter-spacing: -.02em; }
+.pi-sub { margin-top: .6rem; font-family: var(--serif); font-size: clamp(1.5rem, 3.2vw, 3.2rem); line-height: 1.1; color: var(--azul-prancha); }
+.pi-nome { margin-top: clamp(1.2rem, 4vh, 2.6rem); font-family: var(--mono); font-weight: 500; font-size: clamp(1.3rem, 2.4vw, 2.4rem); }
+.pre-info ul { list-style: none; padding: 0; margin-top: .5rem; display: grid; gap: .25rem; font-family: var(--mono); font-size: clamp(1rem, 1.7vw, 1.7rem); line-height: 1.35; }
+.pi-cred { margin-top: clamp(1rem, 3vh, 2rem); padding-top: .8rem; border-top: 2px solid var(--azul-prancha); display: inline-block; font-family: var(--mono); font-size: clamp(.95rem, 1.5vw, 1.5rem); color: var(--azul-prancha); }
 .pre-barra { background: rgba(10, 33, 102, .18) !important; }
 .pre-barra i { background: var(--azul-prancha) !important; }
 
