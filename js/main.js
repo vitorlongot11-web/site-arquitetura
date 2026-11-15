@@ -105,6 +105,8 @@
       mostrados = k;
       cartoes.forEach((c, i) => { c.classList.toggle('on', i < k); c.classList.toggle('atual', i === k - 1); });
       oque.classList.toggle('completo', k >= cartoes.length);
+      /* o croqui avança junto: lápis -> tijolo -> sombra -> cor -> aquarela completa */
+      oque.querySelectorAll('.croqui img').forEach((im, i) => im.classList.toggle('on', i === k));
     };
     steppers.set(oque, { count: cartoes.length + 1, get: () => mostrados, set: mostrar });
     cartoes.forEach((c, i) => c.addEventListener('click', () => mostrar(i + 1)));
