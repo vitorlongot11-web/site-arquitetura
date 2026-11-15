@@ -16,8 +16,8 @@
   <link rel="preload" href="fonts/InstrumentSerif-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/vida.css">
-  <link rel="stylesheet" href="css/heron.css?v=5">
+  <link rel="stylesheet" href="css/vida.css?v=6">
+  <link rel="stylesheet" href="css/heron.css?v=7">
 </head>
 <body>
 
@@ -35,6 +35,7 @@
       <li>Professor Aido</li>
     </ul>
     <p class="pi-cred">Créditos: Vitor Tertuliano</p>
+    <div class="pi-entrar"><button class="pre-entrar" id="pre-entrar" type="button">Entrar</button><span>depois, use as setas ← → para avançar</span></div>
   </div>
   <div class="pre-num"><span class="pre-n">00</span><small>%</small></div>
   <div class="pre-barra"><i></i></div>
@@ -45,7 +46,7 @@
 <div class="progresso" aria-hidden="true"><span id="barra"></span></div>
 
 <header class="topo">
-  <a class="marca" href="#capa" aria-label="Voltar à capa"><svg class="emb" viewBox="0 0 120 112" aria-hidden="true"><circle cx="60" cy="11" r="7"/><path d="M55 18L22 98M65 18L98 98"/><path d="M6 52L16 42L60 86L104 42L114 52L60 106Z"/></svg><span>Arquitetura</span><span id="contador" aria-live="off">01 / 09</span></a>
+  <a class="marca" href="#oque" aria-label="Voltar ao início"><svg class="emb" viewBox="0 0 120 112" aria-hidden="true"><circle cx="60" cy="11" r="7"/><path d="M55 18L22 98M65 18L98 98"/><path d="M6 52L16 42L60 86L104 42L114 52L60 106Z"/></svg><span>Arquitetura</span><span id="contador" aria-live="off">01 / 08</span></a>
   <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Seções</button>
 </header>
 
@@ -57,64 +58,11 @@
 
 <main>
 
-<!-- 01 CAPA -->
-<section class="prancha capa t-profundo" id="capa" data-nome="Capa">
-  <div class="wrap capa-grid">
-    <div>
-      <p class="tag">Prancha 01</p>
-      <h1 id="titulo"><span class="w" style="--k:0"><span>Arquitetura</span></span></h1>
-      <p class="sub" id="subtitulo">Profissão, mercado e o futuro das cidades</p>
-      <div class="ficha">
-        <p><strong>Laura Tertuliano</strong></p>
-        <p>1º ano do EM</p>
-        <p>Itinerário formativo de humanas: geografia</p>
-        <p>Escola Franciscana Imaculada Conceição</p>
-        <p>Professor Aido</p>
-      </div>
-      <button class="entrar" id="entrar">Entrar</button>
-    </div>
-
-    <svg class="desenho draw capa-desenho" viewBox="0 0 600 440" role="img" aria-label="Desenho de linha de uma fachada de edifícios com medidas">
-      <g>
-        <path class="tr" d="M20 390H580" style="--d:0"/>
-        <path class="tr" d="M60 390V140H260V390" style="--d:.15"/>
-        <path class="tr" d="M60 140L90 120H230L260 140" style="--d:.3"/>
-        <path class="tr" d="M260 390V230H400V390" style="--d:.4"/>
-        <path class="tr" d="M260 230H400M270 218H390V230" style="--d:.5"/>
-        <path class="tr" d="M400 390V70H520V390" style="--d:.55"/>
-        <path class="tr" d="M395 70H525M410 70V50H510V70" style="--d:.7"/>
-        <g data-win="78,165,3,4,32,30,56,52" style="--d:.9"></g>
-        <g data-win="280,255,2,2,36,34,56,56" style="--d:1.1"></g>
-        <g data-win="418,95,3,5,22,28,34,52" style="--d:1.2"></g>
-        <path class="tr fino" d="M60 412V404M520 412V404M60 408H520" style="--d:1.4"/>
-        <path class="tr fino" d="M548 70H556M548 390H556M552 70V390" style="--d:1.5"/>
-        <svg x="86" y="-8" width="108" height="100" viewBox="0 0 120 112" aria-hidden="true">
-          <circle class="tr" cx="60" cy="11" r="7" style="--d:0"/>
-          <path class="tr" d="M55 18L22 98L29 100L60 34" style="--d:.1"/>
-          <path class="tr" d="M65 18L98 98L91 100L60 34" style="--d:.1"/>
-          <path class="tr" d="M6 52L16 42L60 86L104 42L114 52L60 106Z" style="--d:.25"/>
-          <path class="tr fino" d="M20.4 46.4l-4 4M24.8 50.8l-6.5 6.5M29.2 55.2l-4 4M33.6 59.6l-6.5 6.5M38 64l-4 4M42.4 68.4l-6.5 6.5M46.8 72.8l-4 4M51.2 77.2l-6.5 6.5M55.6 81.6l-4 4" style="--d:.5"/>
-          <path class="tr fino" d="M99.6 46.4l4 4M95.2 50.8l6.5 6.5M90.8 55.2l4 4M86.4 59.6l6.5 6.5M82 64l4 4M77.6 68.4l6.5 6.5M73.2 72.8l4 4M68.8 77.2l6.5 6.5M64.4 81.6l4 4" style="--d:.5"/>
-        </svg>
-        <text x="270" y="428">46,80 m</text>
-        <text x="560" y="236" transform="rotate(90 560 236)">31,20 m</text>
-      </g>
-    </svg>
-  </div>
-
-  <p class="dica">← → avançam   ↑ ↓ trocam de seção</p>
-
-  <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
-    <span>Arquitetura</span><span>Urbanismo</span><span>BIM</span><span>Sustentabilidade</span><span>Cidades inteligentes</span><span>Neuroarquitetura</span><span>Construção modular</span><span>Patrimônio</span>
-    <span>Arquitetura</span><span>Urbanismo</span><span>BIM</span><span>Sustentabilidade</span><span>Cidades inteligentes</span><span>Neuroarquitetura</span><span>Construção modular</span><span>Patrimônio</span>
-  </div></div>
-</section>
-
 <!-- 02 O QUE É -->
 <section class="prancha t-papel" id="oque" data-nome="O que é Arquitetura">
   <div class="wrap duas">
     <div>
-      <p class="tag">Prancha 02</p>
+      <p class="tag">Prancha 01</p>
       <h2 class="frase">O que é Arquitetura e por que ela é importante?</h2>
       <p class="lead">A arquitetura é a arte de planejar espaços e cidades, unindo técnica e estética. Ela é essencial porque garante segurança, melhora o bem-estar e a saúde com ambientes confortáveis, promove a sustentabilidade e preserva a identidade cultural da sociedade.</p>
       <ul class="beneficios desenho">
@@ -155,7 +103,7 @@
 <!-- 03 ÁREAS MAIS REMUNERADAS ATUALMENTE -->
 <section class="prancha t-prancha" id="atuais" data-nome="Áreas mais remuneradas hoje">
   <div class="wrap">
-    <p class="tag">Prancha 03</p>
+    <p class="tag">Prancha 02</p>
     <h2 class="frase">Áreas mais remuneradas atualmente</h2>
     <p class="lead">As áreas mais bem remuneradas na arquitetura:</p>
     <div class="mestre" data-mestre>
@@ -187,7 +135,7 @@
 <!-- 04 ÁREAS MAIS BEM REMUNERADAS NO FUTURO -->
 <section class="prancha t-papel" id="futuro" data-nome="Áreas mais bem remuneradas no futuro">
   <div class="wrap">
-    <p class="tag">Prancha 04</p>
+    <p class="tag">Prancha 03</p>
     <h2 class="frase">Áreas mais bem remuneradas no futuro</h2>
     <p class="lead">As áreas mais promissoras e bem remuneradas da arquitetura para os próximos anos:</p>
     <div class="mestre" data-mestre>
@@ -221,7 +169,7 @@
 <!-- 05 ÁREAS MENOS REMUNERADAS NO FUTURO -->
 <section class="prancha t-profundo" id="menos" data-nome="Áreas menos remuneradas no futuro">
   <div class="wrap">
-    <p class="tag">Prancha 05</p>
+    <p class="tag">Prancha 04</p>
     <h2 class="frase">Áreas menos remuneradas no futuro</h2>
     <p class="lead">As áreas com tendência a menor remuneração no futuro da arquitetura são aquelas altamente repetitivas, operacionais ou suscetíveis à automação direta por inteligência artificial e ferramentas generativas:</p>
     <div class="mestre" data-mestre>
@@ -257,7 +205,7 @@
 <section class="prancha t-papel" id="inovacoes" data-nome="Próximas inovações técnicas">
   <div class="wrap duas inov">
     <div>
-      <p class="tag">Prancha 06</p>
+      <p class="tag">Prancha 05</p>
       <h2 class="frase">Ideias das próximas inovações técnicas</h2>
       <p class="lead">As principais tendências, inovações tecnológicas e caminhos que estão moldando o futuro da arquitetura concentram-se em áreas de alto valor agregado e alta complexidade:</p>
     </div>
@@ -320,7 +268,7 @@
 <!-- 07 VESTIBULARES -->
 <section class="prancha t-prancha" id="vestibulares" data-nome="Vestibulares para Arquitetura">
   <div class="wrap">
-    <p class="tag">Prancha 07</p>
+    <p class="tag">Prancha 06</p>
     <h2 class="frase">Vestibulares para cursar Arquitetura</h2>
     <p class="lead">Os vestibulares mais renomados para cursar Arquitetura no Brasil são:</p>
     <ul class="cards-vest">
@@ -337,7 +285,7 @@
 <section class="prancha t-papel" id="midias" data-nome="Regulamentação das mídias sociais">
   <div class="wrap duas">
     <div>
-      <p class="tag">Prancha 08</p>
+      <p class="tag">Prancha 07</p>
       <h2 class="frase">Regulamentação do uso das mídias sociais</h2>
       <p class="lead">A regulamentação das redes sociais é a criação de leis para deixar plataformas como Instagram e TikTok mais seguras. Ela busca combater golpes, fake news e discursos de ódio, além de proteger crianças e adolescentes na internet. O objetivo é fazer com que as empresas tirem conteúdos criminosos do ar mais rápido, sem prejudicar a liberdade de expressão dos usuários.</p>
       <ul class="pontos-chave">
@@ -359,7 +307,7 @@
 <!-- 09 FONTES -->
 <section class="prancha t-profundo" id="fontes" data-nome="Fontes">
   <div class="wrap">
-    <p class="tag">Prancha 09</p>
+    <p class="tag">Prancha 08</p>
     <h2 class="frase">Fontes</h2>
     <div class="fontes-grid">
       <div>
@@ -430,8 +378,8 @@
 
 </main>
 
-<script src="js/main.js"></script>
-<script src="js/vida.js"></script>
-<script src="js/heron.js?v=4"></script>
+<script src="js/main.js?v=6"></script>
+<script src="js/vida.js?v=6"></script>
+<script src="js/heron.js?v=6"></script>
 </body>
 </html>

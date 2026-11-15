@@ -55,7 +55,7 @@ html.anim.abre .capa .draw text { opacity: 1; transition: opacity .9s ease 2.3s;
 
 /* barra superior e pontos entram por último */
 .anim:not(.abre) .topo, .anim:not(.abre) .pontos { opacity: 0; }
-.anim.abre .topo, .anim.abre .pontos { opacity: 1; transition: opacity 1s ease 2.2s; }
+.anim.abre .topo, .anim.abre .pontos { opacity: 1; transition: opacity 1s ease .5s; }
 
 /* ao rolar: título e desenho se afastam em velocidades diferentes; a capa esmaece */
 .anim .capa #titulo { transform: translate3d(0, calc(var(--py, 0) * .22px), 0); }

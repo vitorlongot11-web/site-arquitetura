@@ -15,26 +15,26 @@
   const VELOCIDADE = 1.3;                 /* 10 s de vídeo viram ~7,7 s de tela de carregamento */
   let acabou = false;
 
-  const LEITURA = 6500;                   /* tempo parado em 100% para ler o texto (ms) */
-  let espera = 0, fechou = false;
+  let fechou = false;
+  const botao = document.getElementById('pre-entrar');
   function fechar() {
-    if (fechou) return; fechou = true;
-    clearTimeout(espera);
+    if (fechou || !acabou) return; fechou = true;
     pre.classList.add('fim');
     root.classList.remove('pre-ativo');
-    setTimeout(fim, 650);                 /* capa começa a abrir quando a cortina já subiu */
+    window.scrollTo(0, 0);
+    setTimeout(fim, 650);                 /* o site começa a animar quando a cortina já subiu */
     setTimeout(() => { pre.classList.add('some'); vid.removeAttribute('src'); vid.load(); }, 1200);
   }
   function sair() {
     if (acabou) return; acabou = true;
     num.textContent = '100';
     barra.style.transform = 'scaleX(1)';
-    pre.classList.add('info');            /* garante o texto mesmo se o vídeo pulou etapas */
-    espera = setTimeout(fechar, LEITURA);
+    pre.classList.add('info', 'pronto');  /* garante o texto e mostra o botão Entrar */
+    setTimeout(() => botao.focus({ preventScroll: true }), 1400);
   }
-  /* clique, Enter, espaço ou seta: pula a espera depois do 100% */
-  pre.addEventListener('click', () => { if (acabou) fechar(); });
-  addEventListener('keydown', (e) => { if (acabou && !fechou && /^(Enter| |ArrowRight|ArrowDown)$/.test(e.key)) fechar(); });
+  /* o site só abre quando a pessoa clica em Entrar (ou aperta Enter / espaço) */
+  botao.addEventListener('click', fechar);
+  addEventListener('keydown', (e) => { if (acabou && !fechou && /^(Enter| )$/.test(e.key)) { e.preventDefault(); fechar(); } });
 
   /* o contador acompanha o tempo do vídeo: 100% = última imagem da obra */
   function atualiza() {
@@ -52,7 +52,7 @@
   const tocar = vid.play();
   if (tocar && tocar.catch) tocar.catch(() => setTimeout(sair, 600));
   requestAnimationFrame(atualiza);
-  setTimeout(sair, 16000);                /* rede de segurança (internet lenta) */
+  setTimeout(sair, 16000);                /* rede de segurança (internet lenta): mostra o botão */
 
   /* ---------- 2. Rótulos que se embaralham ao entrar na tela ---------- */
   const GLIFOS = '/\\|_-+<>[]0123456789';
@@ -77,10 +77,8 @@
     io.unobserve(e.target);
     setTimeout(() => embaralhar(e.target), 250);
   }), { threshold: 0.6 });
-  rotulos.forEach((el) => {
-    el.setAttribute('aria-label', el.textContent.trim());
-    io.observe(el);
-  });
+  rotulos.forEach((el) => el.setAttribute('aria-label', el.textContent.trim()));
+  addEventListener('pre:fim', () => rotulos.forEach((el) => io.observe(el)));
 
   /* ---------- 3. Rótulo lateral da moldura: prancha atual + progresso ---------- */
   const lado = document.getElementById('moldura-rotulo');

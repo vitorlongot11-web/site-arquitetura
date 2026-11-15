@@ -127,8 +127,6 @@
   menuFechar.addEventListener('click', () => abrirMenu(false));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) { menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); } });
 
-  document.getElementById('entrar').addEventListener('click', () => goto(1));
-
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     const tag = (e.target.tagName || '').toLowerCase();

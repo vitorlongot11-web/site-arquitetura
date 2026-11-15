@@ -8,13 +8,12 @@
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const secs = [...document.querySelectorAll('.prancha')];
-  const capa = document.getElementById('capa');
   const barra = document.getElementById('barra');
 
   /* ---------- 1. Abertura da capa: espera as fontes para não "pular" ---------- */
   const abrir = () => {
     if (root.classList.contains('abre')) return;
-    requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('abre')));
+    requestAnimationFrame(() => requestAnimationFrame(() => { root.classList.add('abre'); if (window.__vidaIniciar) window.__vidaIniciar(); }));
   };
   /* a capa só abre quando as fontes carregaram E o preloader (heron.js) terminou */
   let fontesOk = !(document.fonts && document.fonts.load), preOk = !document.getElementById('pre');
@@ -29,12 +28,9 @@
   addEventListener('pre:fim', () => { preOk = true; tenta(); });
   setTimeout(abrir, 6000);
 
-  capa.querySelectorAll('.ficha p').forEach((p, i) => p.style.setProperty('--h', (1.5 + i * 0.1).toFixed(2) + 's'));
-
   /* ---------- 2. Títulos por máscara + conteúdo em sequência ---------- */
   const itens = '.tag, .lead, .beneficios li, .pontos-chave li, .mestre .lista li, .mestre .detalhe, .carrossel, .rolo, .cards-vest li, .fontes-grid > div, .rodape, .fonte';
   secs.forEach((sec) => {
-    if (sec === capa) return;
     const frase = sec.querySelector('.frase');
     if (frase) {
       const texto = frase.textContent.trim();
@@ -63,7 +59,10 @@
       io.unobserve(e.target);
     });
   }, { threshold: 0.2 });
-  secs.forEach((s) => { if (s !== capa) io.observe(s); });
+  /* só começa a observar depois que o preloader sai (senão a 1ª prancha anima escondida) */
+  let observando = false;
+  const iniciar = () => { if (observando) return; observando = true; secs.forEach((s) => io.observe(s)); };
+  window.__vidaIniciar = iniciar;
 
   /* ---------- 3. Desenhos que se traçam conforme o scroll ---------- */
   const desenhos = [...document.querySelectorAll('.prancha:not(.capa) .draw')].map((svg) => {
@@ -102,7 +101,6 @@
       }
     });
 
-    capa.style.setProperty('--py', Math.min(y, vh * 1.2).toFixed(1));
     const total = document.documentElement.scrollHeight - vh;
     barra.style.transform = `scaleX(${total > 0 ? clamp(y / total).toFixed(4) : 0})`;
   }
@@ -113,25 +111,4 @@
   addEventListener('load', pedir);
   atualizar();
 
-  /* ---------- 4. Desenho da capa segue o mouse, devagar ---------- */
-  if (!matchMedia('(pointer: coarse)').matches) {
-    let tx = 0, ty = 0, mx = 0, my = 0, rodando = false;
-    const passo = () => {
-      mx += (tx - mx) * 0.07;
-      my += (ty - my) * 0.07;
-      capa.style.setProperty('--mx', mx.toFixed(2) + 'px');
-      capa.style.setProperty('--my', my.toFixed(2) + 'px');
-      if (Math.abs(tx - mx) > 0.05 || Math.abs(ty - my) > 0.05) requestAnimationFrame(passo);
-      else rodando = false;
-    };
-    capa.addEventListener('pointermove', (e) => {
-      tx = (e.clientX / innerWidth - 0.5) * 2 * 14;
-      ty = (e.clientY / innerHeight - 0.5) * 2 * 10;
-      if (!rodando) { rodando = true; requestAnimationFrame(passo); }
-    });
-    capa.addEventListener('pointerleave', () => {
-      tx = 0; ty = 0;
-      if (!rodando) { rodando = true; requestAnimationFrame(passo); }
-    });
-  }
 })();

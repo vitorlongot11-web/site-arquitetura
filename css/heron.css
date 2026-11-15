@@ -98,7 +98,7 @@ html.pre-ativo body { overflow: hidden; }
   font: 500 9px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #fff; white-space: nowrap;
 }
 .anim:not(.abre) .moldura { opacity: 0; }
-.anim.abre .moldura { opacity: .38; transition: opacity 1s ease 2.2s; }
+.anim.abre .moldura { opacity: .38; transition: opacity 1s ease .5s; }
 
 /* ---------- 3. FITA EM LOOP NA CAPA ---------- */
 .faixa { display: none; }
@@ -222,3 +222,23 @@ body { font-size: clamp(.78rem, min(.55vw + .95rem, 2.55vh), 1.4rem); }
 .rodape { margin-top: clamp(1rem, 3vh, 3rem); }
 .planta { max-height: 46vh; }
 .escudo { max-height: 46vh; }
+
+
+/* ==========================================================
+   BOTÃO "ENTRAR" na tela de carregamento (substitui a capa)
+   ========================================================== */
+.pi-entrar { margin-top: clamp(1rem, 3.4vh, 2.4rem); display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.pre-entrar {
+  font: 500 clamp(1.1rem, 2.4vh, 1.7rem)/1 var(--mono); text-transform: none; letter-spacing: .02em;
+  background: var(--azul-profundo); color: var(--papel); border: 0; border-radius: 999px;
+  padding: .85em 2.2em; cursor: pointer;
+  background-image: linear-gradient(var(--laranja), var(--laranja)); background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 0;
+  transition: background-size .45s cubic-bezier(.76, 0, .24, 1), transform .2s var(--ease), opacity .6s ease;
+}
+.pre-entrar:hover, .pre-entrar:focus-visible { background-size: 100% 100%; }
+.pre-entrar:active { transform: scale(.97); }
+.pi-entrar span { font: 500 clamp(.95rem, 2vh, 1.4rem)/1.3 var(--mono); color: var(--azul-prancha); }
+/* o botão só aparece (e só funciona) quando chega aos 100% */
+.pi-entrar { visibility: hidden; }
+.pre.pronto .pi-entrar { visibility: visible; }
+.pre:not(.pronto) .pre-entrar { pointer-events: none; }
