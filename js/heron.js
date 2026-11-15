@@ -11,31 +11,45 @@
   root.classList.add('pre-ativo');
   const num = pre.querySelector('.pre-n');
   const barra = pre.querySelector('.pre-barra i');
-  const itens = [...pre.querySelectorAll('.pre-log li')];
-  const DUR = 2400;
+  const DUR = 4600;                        /* tempo em que a casa é construída */
   const t0 = performance.now();
   let acabou = false;
-  const ease = (t) => 1 - Math.pow(1 - t, 2.2);
+  const clamp = (v) => Math.min(1, Math.max(0, v));
+  const ease = (t) => 0.5 - Math.cos(Math.PI * t) / 2;
+
+  /* a casa: cada grupo [data-a, data-b] é desenhado entre esses pontos do progresso */
+  const grupos = [...pre.querySelectorAll('g[data-a]')].map((g) => ({
+    a: parseFloat(g.dataset.a), b: parseFloat(g.dataset.b),
+    linhas: [...g.querySelectorAll('.l')], fundos: [...g.querySelectorAll('.f')],
+  }));
+  grupos.forEach((g) => g.linhas.forEach((l) => l.setAttribute('pathLength', '1')));
+  function casa(p) {
+    grupos.forEach((g) => {
+      const t = clamp((p - g.a) / (g.b - g.a));
+      g.linhas.forEach((l) => { l.style.strokeDashoffset = (1 - clamp(t * 1.6)).toFixed(3); });
+      g.fundos.forEach((f) => { f.style.opacity = clamp((t - 0.3) * 1.8).toFixed(3); });
+    });
+  }
 
   function sair() {
     if (acabou) return; acabou = true;
     num.textContent = '100';
     barra.style.transform = 'scaleX(1)';
-    itens.forEach((li) => li.classList.add('on'));
+    casa(1);
     setTimeout(() => {
       pre.classList.add('fim');
       root.classList.remove('pre-ativo');
       setTimeout(fim, 650);               /* capa começa a abrir quando a cortina já subiu */
       setTimeout(() => pre.classList.add('some'), 1200);
-    }, 280);
+    }, 700);                              /* casa pronta fica visível um instante */
   }
   (function passo(agora) {
     if (acabou) return;
     const t = Math.min(1, (agora - t0) / DUR);
-    const v = Math.round(ease(t) * 100);
-    num.textContent = String(v).padStart(2, '0');
-    barra.style.transform = `scaleX(${ease(t)})`;
-    itens.forEach((li, i) => li.classList.toggle('on', v >= (i + 1) * (100 / itens.length) - 4));
+    const e = ease(t);
+    num.textContent = String(Math.round(e * 100)).padStart(2, '0');
+    barra.style.transform = `scaleX(${e})`;
+    casa(e);
     if (t < 1) requestAnimationFrame(passo); else sair();
   })(t0);
   setTimeout(sair, DUR + 2500);           /* rede de segurança */
