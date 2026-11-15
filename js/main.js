@@ -99,22 +99,24 @@
   /* ---------- Prancha 01: os 4 cartões aparecem um a um com as setas ---------- */
   const oque = document.getElementById('oque');
   if (oque && root.classList.contains('anim')) {
-    const cartoes = [...oque.querySelectorAll('.beneficios li')];
-    let mostrados = 0;
-    const mostrar = (k) => {
-      mostrados = k;
-      cartoes.forEach((c, i) => { c.classList.toggle('on', i < k); c.classList.toggle('atual', i === k - 1); });
-      oque.classList.toggle('completo', k >= cartoes.length);
-      /* o croqui avança junto: lápis -> tijolo -> sombra -> cor -> aquarela completa */
-      oque.querySelectorAll('.croqui img').forEach((im, i) => im.classList.toggle('on', i === k));
+    /* Ao chegar na prancha, os 4 cartões surgem JUNTOS (devagar) enquanto o croqui
+       é "construído" no mesmo ritmo: lápis -> tijolo -> sombra -> cor -> aquarela. */
+    const imgs = [...oque.querySelectorAll('.croqui img')];
+    const PASSO = 1300;                        /* ms entre uma etapa do croqui e a próxima */
+    let rodou = false, liberado = false, visivel = false;
+    const etapa = (i) => imgs.forEach((im, j) => im.classList.toggle('on', j === i));
+    const rodar = () => {
+      if (rodou) return; rodou = true;
+      oque.classList.add('mostra');
+      imgs.forEach((_, i) => setTimeout(() => etapa(i), 400 + i * PASSO));
     };
-    steppers.set(oque, { count: cartoes.length + 1, get: () => mostrados, set: mostrar });
-    cartoes.forEach((c, i) => c.addEventListener('click', () => mostrar(i + 1)));
-    mostrar(0);
-    /* quem só rola a página (sem usar setas) não fica sem o conteúdo */
+    const tentar = () => { if (liberado && visivel) setTimeout(rodar, 500); };
+    addEventListener('pre:fim', () => { liberado = true; tentar(); });
     new IntersectionObserver((es) => es.forEach((e) => {
-      if (!e.isIntersecting && e.boundingClientRect.top < 0) mostrar(cartoes.length);
-    }), { threshold: 0 }).observe(oque);
+      visivel = e.isIntersecting;
+      if (visivel) tentar();
+      else if (e.boundingClientRect.top < 0 && !rodou) { rodou = true; oque.classList.add('mostra'); etapa(imgs.length - 1); }
+    }), { threshold: 0.55 }).observe(oque);
   }
 
   /* ---------- Navegação ---------- */

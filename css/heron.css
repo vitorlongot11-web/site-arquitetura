@@ -330,3 +330,12 @@ html.anim .croqui img.on { opacity: 1; }
   background-repeat: no-repeat;
 }
 #oque .duas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+/* ---------- Prancha 01: cartões juntos + croqui no mesmo ritmo (sem depender das setas) ---------- */
+html.anim .prancha#oque.mostra .beneficios li { border-style: solid; background: var(--panel); transition: border-color 1.6s ease, background 3s ease; }
+html.anim .prancha#oque.mostra .beneficios li > *,
+html.anim .prancha#oque.mostra .beneficios li::before {
+  opacity: 1; transform: none;
+  transition: opacity 4.2s ease .3s, transform 4.2s var(--ease) .3s;
+}
+.croqui img { transition: opacity 1.5s ease; }
