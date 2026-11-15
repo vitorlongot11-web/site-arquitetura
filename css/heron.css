@@ -92,11 +92,6 @@ html.pre-ativo body { overflow: hidden; }
 .moldura i:nth-child(2) { right: -7px; top: -7px; }
 .moldura i:nth-child(3) { left: -7px; bottom: -7px; }
 .moldura i:nth-child(4) { right: -7px; bottom: -7px; }
-.moldura b {
-  position: absolute; left: 2px; top: 50%; transform: translateY(-50%) rotate(180deg);
-  writing-mode: vertical-rl;
-  font: 500 9px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #fff; white-space: nowrap;
-}
 .anim:not(.abre) .moldura { opacity: 0; }
 .anim.abre .moldura { opacity: .38; transition: opacity 1s ease .5s; }
 
@@ -172,11 +167,7 @@ html.pre-ativo body { overflow: hidden; }
 .anim .lista button[aria-selected="true"]::before { background: var(--laranja); border-color: var(--laranja); }
 
 @media (max-width: 900px) {
-  .moldura b { display: none; }
-  .anim .pre { grid-template-columns: 1fr; }
-  .anim .capa .dica { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
   .pre, .moldura, .faixa { display: none !important; }
 }
 

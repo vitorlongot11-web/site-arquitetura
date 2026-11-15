@@ -80,22 +80,4 @@
   rotulos.forEach((el) => el.setAttribute('aria-label', el.textContent.trim()));
   addEventListener('pre:fim', () => rotulos.forEach((el) => io.observe(el)));
 
-  /* ---------- 3. Rótulo lateral da moldura: prancha atual + progresso ---------- */
-  const lado = document.getElementById('moldura-rotulo');
-  const secs = [...document.querySelectorAll('.prancha')];
-  let pend = false;
-  function lateral() {
-    pend = false;
-    const meio = innerHeight / 2;
-    let i = 0;
-    secs.forEach((s, k) => { const r = s.getBoundingClientRect(); if (r.top <= meio) i = k; });
-    const total = root.scrollHeight - innerHeight;
-    const pct = total > 0 ? Math.round((scrollY / total) * 100) : 0;
-    const nome = (secs[i].dataset.nome || '').toUpperCase();
-    lado.textContent = `PRANCHA ${String(i + 1).padStart(2, '0')}/${String(secs.length).padStart(2, '0')} · ${nome} · ${String(pct).padStart(3, '0')}%`;
-  }
-  const pedir = () => { if (!pend) { pend = true; requestAnimationFrame(lateral); } };
-  addEventListener('scroll', pedir, { passive: true });
-  addEventListener('resize', pedir);
-  lateral();
 })();
