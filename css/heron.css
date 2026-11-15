@@ -416,3 +416,33 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
 :is(#atuais, #futuro, #menos) .detalhe p { font-size: clamp(1rem, 2.6vh, 2.1rem); }
 :is(#atuais, #futuro, #menos) .lead { font-size: clamp(.95rem, 2.5vh, 1.9rem); }
 :is(#atuais, #futuro, #menos) .detalhe h3 { font-size: clamp(1.4rem, min(3.1vw, 4.9vh), 4rem); }
+
+/* ==========================================================
+   PRANCHA 02: um desenho DIFERENTE para cada área, grande,
+   de traço grosso (aguenta o "desbotado" do projetor) e que
+   se traça sozinho quando a área aparece.
+   ========================================================== */
+#atuais .detalhe article[hidden] { display: none; }
+#atuais .detalhe article:not([hidden]) {
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(130px, min(17vw, 36vh), 340px);
+  grid-template-areas: "lab svg" "tit svg" "txt svg"; column-gap: clamp(.8rem, 2vw, 2rem); align-items: center;
+}
+#atuais .detalhe article::before { grid-area: lab; align-self: end; }
+#atuais .detalhe article h3 { grid-area: tit; max-width: none; }
+#atuais .detalhe article p { grid-area: txt; align-self: start; }
+#atuais .area-desenho {
+  grid-area: svg; width: 100%; height: auto; align-self: center;
+  fill: none; stroke: var(--fg); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, .25));
+}
+#atuais .area-desenho .fino { stroke-width: 1.8; opacity: .9; }
+#atuais .area-desenho .ac { stroke: var(--laranja); }
+#atuais .area-desenho .ac:not(.fino) { stroke-width: 3.4; }
+
+/* traçado: cada vez que a área aparece, o desenho é desenhado do zero */
+.js #atuais .area-desenho .tr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js #atuais.is-active article.painel .area-desenho .tr {
+  animation: tracar 1.7s var(--ease) forwards; animation-delay: calc(var(--d, 0) * .6s + .15s);
+}
+@keyframes tracar { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .js #atuais .area-desenho .tr { stroke-dashoffset: 0; animation: none; } }
