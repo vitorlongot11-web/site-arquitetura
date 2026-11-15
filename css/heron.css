@@ -242,3 +242,67 @@ body { font-size: clamp(.78rem, min(.55vw + .95rem, 2.55vh), 1.4rem); }
 .pi-entrar { visibility: hidden; }
 .pre.pronto .pi-entrar { visibility: visible; }
 .pre:not(.pronto) .pre-entrar { pointer-events: none; }
+
+/* ==========================================================
+   PRANCHA 01 ("O que é Arquitetura"): maior, mais legível no
+   projetor e com 4 cartões que aparecem um a um (tecla →).
+   ========================================================== */
+#oque .wrap { max-width: min(1700px, 100%); }
+#oque .duas { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(1.5rem, 5vw, 6rem); }
+#oque .frase { font-size: clamp(2rem, min(6vw, 11vh), 7rem); max-width: 17ch; }
+#oque .lead { font-size: clamp(1rem, 2.6vh, 2rem); max-width: 58ch; margin-top: clamp(.6rem, 2vh, 1.4rem); line-height: 1.5; }
+#oque .planta { max-height: 66vh; width: 100%; }
+
+#oque .beneficios {
+  counter-reset: b; margin-top: clamp(1rem, 3.6vh, 2.5rem); max-width: 860px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.6rem, 2vh, 1.2rem);
+}
+#oque .beneficios li {
+  counter-increment: b; position: relative;
+  display: grid; grid-template-columns: auto 1fr; grid-template-areas: "num num" "ico lab";
+  column-gap: clamp(.7rem, 1.2vw, 1.1rem); row-gap: .45rem; align-items: center;
+  padding: clamp(.7rem, 1.8vh, 1.3rem) clamp(.9rem, 1.6vw, 1.5rem);
+  min-height: clamp(84px, 14vh, 130px);
+  border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+  background: var(--panel);
+}
+#oque .beneficios li::before {
+  grid-area: num; content: "[0" counter(b) "]";
+  font: 500 .72em/1 var(--mono); letter-spacing: .1em; color: var(--laranja);
+}
+#oque .beneficios svg { grid-area: ico; width: clamp(34px, 6.6vh, 62px); height: clamp(34px, 6.6vh, 62px); }
+#oque .beneficios span { grid-area: lab; font-size: 1.12em; font-weight: 500; line-height: 1.2; }
+
+/* com animações: o cartão é só um molde tracejado até aparecer */
+html.anim .prancha#oque .beneficios li {
+  opacity: 1; transform: none;
+  border-style: dashed; background: transparent;
+  transition: border-color .45s ease, background .45s ease, box-shadow .45s ease;
+}
+html.anim .prancha#oque .beneficios li > *, html.anim .prancha#oque .beneficios li::before {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .55s ease .1s, transform .7s var(--ease) .1s;
+}
+html.anim .prancha#oque .beneficios li.on { border-style: solid; background: var(--panel); }
+html.anim .prancha#oque .beneficios li.on > *, html.anim .prancha#oque .beneficios li.on::before { opacity: 1; transform: none; }
+html.anim .prancha#oque .beneficios li.atual { border-color: var(--laranja); box-shadow: 0 0 0 3px color-mix(in srgb, var(--laranja) 22%, transparent); }
+#oque .beneficios li { cursor: pointer; }
+
+.dica-passo { display: none; }
+html.anim #oque .dica-passo {
+  display: block; margin-top: clamp(.7rem, 2vh, 1.2rem);
+  font: 500 clamp(.8rem, 1.9vh, 1.2rem)/1 var(--mono); letter-spacing: .06em; color: var(--azul-prancha);
+  animation: pulsa 1.6s ease-in-out infinite;
+}
+html.anim #oque.completo .dica-passo { display: none; }
+@keyframes pulsa { 50% { opacity: .35; } }
+
+/* Prancha 01: ajuste fino para telas baixas (notebook) */
+#oque .frase { font-size: clamp(1.7rem, min(6vw, 9.4vh), 7rem); }
+#oque .frase::after { margin-top: clamp(.4rem, 1.2vh, 1.1rem); }
+#oque .lead { font-size: clamp(.9rem, 2.3vh, 2rem); line-height: 1.4; margin-top: clamp(.4rem, 1.2vh, 1.4rem); }
+#oque .beneficios { margin-top: clamp(.6rem, 2.4vh, 2.5rem); gap: clamp(.4rem, 1.4vh, 1.2rem); }
+#oque .beneficios li { min-height: clamp(56px, 10.5vh, 130px); padding: clamp(.45rem, 1.2vh, 1.3rem) clamp(.8rem, 1.5vw, 1.5rem); row-gap: .3rem; }
+#oque .beneficios svg { width: clamp(26px, 5.2vh, 62px); height: clamp(26px, 5.2vh, 62px); }
+html.anim #oque .dica-passo { margin-top: clamp(.4rem, 1.2vh, 1.2rem); }
+#oque .planta { max-height: 60vh; }

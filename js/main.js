@@ -96,6 +96,25 @@
     set(0);
   });
 
+  /* ---------- Prancha 01: os 4 cartões aparecem um a um com as setas ---------- */
+  const oque = document.getElementById('oque');
+  if (oque && root.classList.contains('anim')) {
+    const cartoes = [...oque.querySelectorAll('.beneficios li')];
+    let mostrados = 0;
+    const mostrar = (k) => {
+      mostrados = k;
+      cartoes.forEach((c, i) => { c.classList.toggle('on', i < k); c.classList.toggle('atual', i === k - 1); });
+      oque.classList.toggle('completo', k >= cartoes.length);
+    };
+    steppers.set(oque, { count: cartoes.length + 1, get: () => mostrados, set: mostrar });
+    cartoes.forEach((c, i) => c.addEventListener('click', () => mostrar(i + 1)));
+    mostrar(0);
+    /* quem só rola a página (sem usar setas) não fica sem o conteúdo */
+    new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting && e.boundingClientRect.top < 0) mostrar(cartoes.length);
+    }), { threshold: 0 }).observe(oque);
+  }
+
   /* ---------- Navegação ---------- */
   function goto(i) {
     i = Math.max(0, Math.min(total - 1, i));
