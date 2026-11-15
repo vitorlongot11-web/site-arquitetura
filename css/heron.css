@@ -191,3 +191,34 @@ html.pre-ativo body { overflow: hidden; }
 .capa .ficha { margin-top: clamp(.7rem, 2.4vh, 2.75rem); font-size: clamp(.78rem, 2.4vh, 1.35rem); line-height: 1.5; }
 .capa .entrar { margin-top: clamp(.7rem, 2.4vh, 2rem); min-height: clamp(38px, 6vh, 52px); padding-block: .5rem; }
 .capa-desenho { max-height: min(66vh, 62vw); }
+
+/* ==========================================================
+   TODAS AS SEÇÕES: o tamanho acompanha a ALTURA da tela,
+   para cada prancha caber em uma tela (notebook ou projetor).
+   Em 1920x1080 continua igual a antes.
+   ========================================================== */
+body { font-size: clamp(.78rem, min(.55vw + .95rem, 2.55vh), 1.4rem); }
+.prancha { padding-top: clamp(3.2rem, 8vh, 7rem); padding-bottom: clamp(2rem, 5vh, 4.5rem); }
+.frase { font-size: clamp(1.6rem, min(5.4vw, 8vh), 5.6rem); }
+.tag { margin-bottom: clamp(.4rem, 1.6vh, 1.25rem); }
+.lead { margin-top: clamp(.4rem, 1.2vh, 1rem); }
+.mestre { margin-top: clamp(.6rem, 2.4vh, 2rem); }
+.detalhe { padding: clamp(.9rem, min(3vw, 3.4vh), 2.5rem); min-height: clamp(150px, 30vh, 400px); }
+.detalhe h3 { font-size: clamp(1.2rem, min(2.7vw, 4.4vh), 2.9rem); }
+.lista button { padding-block: clamp(.25rem, .9vh, .8rem); }
+.cards-vest li { min-height: clamp(120px, 24vh, 190px); padding: clamp(.8rem, 2vh, 1.25rem); }
+.cards-vest { margin-top: clamp(.8rem, 3vh, 2.5rem); }
+.carrossel { height: clamp(120px, 24vh, 280px); }
+.card { padding: clamp(.6rem, 1.6vh, 1rem) 1rem; }
+.card svg { width: clamp(30px, 6vh, 50px); height: clamp(30px, 6vh, 50px); }
+.rolo { padding: clamp(.7rem, 2vh, 2rem) clamp(.9rem, 2.4vw, 2rem); gap: clamp(.7rem, 2vh, 2.5rem); margin-top: clamp(.4rem, 1.6vh, 1.25rem); }
+.inov { row-gap: clamp(.5rem, 1.6vh, 1.5rem); }
+.beneficios { margin-top: clamp(.8rem, 3vh, 2.5rem); gap: clamp(.5rem, 1.6vh, 1rem) 1.5rem; }
+.beneficios svg, .beneficios li { }
+.pontos-chave { margin-top: clamp(.8rem, 2.6vh, 1.75rem); gap: clamp(.4rem, 1.4vh, .85rem); }
+.fontes-grid { margin-top: clamp(.6rem, 1.6vh, 1.25rem); grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 17vw, 300px), 1fr)); gap: clamp(.7rem, 2vh, 1.5rem) 1.5rem; }
+.fontes-grid h3 { font-size: clamp(.95rem, 2.4vh, 1.35rem); margin-bottom: .35rem; }
+.fontes-grid ul { gap: .2rem; }
+.rodape { margin-top: clamp(1rem, 3vh, 3rem); }
+.planta { max-height: 46vh; }
+.escudo { max-height: 46vh; }
