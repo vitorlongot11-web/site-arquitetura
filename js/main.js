@@ -99,23 +99,17 @@
   /* ---------- Prancha 01: os 4 cartões aparecem um a um com as setas ---------- */
   const oque = document.getElementById('oque');
   if (oque && root.classList.contains('anim')) {
-    /* Ao chegar na prancha, os 4 cartões surgem JUNTOS (devagar) enquanto o croqui
-       é "construído" no mesmo ritmo: lápis -> tijolo -> sombra -> cor -> aquarela. */
-    const imgs = [...oque.querySelectorAll('.croqui img')];
-    const PASSO = 1300;                        /* ms entre uma etapa do croqui e a próxima */
+    /* Ao chegar na prancha, os 4 cartões surgem JUNTOS (devagar) enquanto o croqui é
+       "construído" no mesmo ritmo: os traços a nanquim sobem do chão ao telhado e,
+       em seguida, a aquarela vai pintando o desenho (tudo feito em CSS, ver heron.css). */
     let rodou = false, liberado = false, visivel = false;
-    const etapa = (i) => imgs.forEach((im, j) => im.classList.toggle('on', j === i));
-    const rodar = () => {
-      if (rodou) return; rodou = true;
-      oque.classList.add('mostra');
-      imgs.forEach((_, i) => setTimeout(() => etapa(i), 400 + i * PASSO));
-    };
+    const rodar = () => { if (rodou) return; rodou = true; oque.classList.add('mostra'); };
     const tentar = () => { if (liberado && visivel) setTimeout(rodar, 500); };
     addEventListener('pre:fim', () => { liberado = true; tentar(); });
     new IntersectionObserver((es) => es.forEach((e) => {
       visivel = e.isIntersecting;
       if (visivel) tentar();
-      else if (e.boundingClientRect.top < 0 && !rodou) { rodou = true; oque.classList.add('mostra'); etapa(imgs.length - 1); }
+      else if (e.boundingClientRect.top < 0 && !rodou) { rodou = true; oque.classList.add('instante', 'mostra'); }
     }), { threshold: 0.55 }).observe(oque);
   }
 

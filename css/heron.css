@@ -339,3 +339,20 @@ html.anim .prancha#oque.mostra .beneficios li::before {
   transition: opacity 4.2s ease .3s, transform 4.2s var(--ease) .3s;
 }
 .croqui img { transition: opacity 1.5s ease; }
+
+
+/* ---------- Croqui da Prancha 01: traços sobem do chão, depois a aquarela pinta ---------- */
+@property --p { syntax: "<percentage>"; inherits: false; initial-value: -14%; }
+.croqui { aspect-ratio: 1024 / 572; }
+.croqui img.cor { object-fit: cover; }
+html.anim .croqui img.linha,
+html.anim .croqui img.cor {
+  opacity: 1; --p: -14%;
+  -webkit-mask-image: linear-gradient(to top, #000 var(--p), transparent calc(var(--p) + 14%));
+  mask-image: linear-gradient(to top, #000 var(--p), transparent calc(var(--p) + 14%));
+  transition: --p 4.2s cubic-bezier(.45, .05, .25, 1);
+}
+html.anim .croqui img.linha { mix-blend-mode: multiply; object-fit: cover; }
+html.anim .croqui img.cor { transition: --p 5s cubic-bezier(.45, .05, .25, 1) 1.7s; }
+html.anim #oque.mostra .croqui img { --p: 100%; }
+html.anim #oque.instante .croqui img { transition: none; }
