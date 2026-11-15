@@ -344,7 +344,7 @@ svg { display: block; }
 .rodape { margin-top: 3rem; font-family: var(--mono); font-size: .75rem; color: var(--azul-traco); }
 
 /* ============ Responsivo ============ */
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .capa-grid, .duas, .mestre { grid-template-columns: minmax(0, 1fr); }
   .pontos { display: none; }
   .dica { display: none; }

@@ -22,6 +22,14 @@
     pre.classList.add('fim');
     root.classList.remove('pre-ativo');
     window.scrollTo(0, 0);
+    /* abre em tela cheia ao entrar (o clique no botão conta como gesto do usuário) */
+    try {
+      const fs = root.requestFullscreen || root.webkitRequestFullscreen;
+      if (fs && !document.fullscreenElement && !document.webkitFullscreenElement) {
+        const r = fs.call(root);
+        if (r && r.catch) r.catch(() => {});
+      }
+    } catch (e) { /* sem tela cheia: segue normal */ }
     setTimeout(fim, 650);                 /* o site começa a animar quando a cortina já subiu */
     setTimeout(() => { pre.classList.add('some'); vid.removeAttribute('src'); vid.load(); }, 1200);
   }
