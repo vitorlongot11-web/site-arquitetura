@@ -1,0 +1,154 @@
+/* ==========================================================
+   Camada "Heron": técnicas inspiradas em heronaiapp.com
+   (preloader com contador e log, moldura com cantoneiras,
+   fita em loop, rótulos que se embaralham, botões com
+   preenchimento, cantos de prancha). Só vale com html.anim.
+   Para desligar: remova este link e js/heron.js.
+   ========================================================== */
+
+:root { --laranja: #FF5A1F; }
+
+/* ---------- 1. PRELOADER ---------- */
+.pre { display: none; }
+.anim .pre {
+  display: grid; position: fixed; inset: 0; z-index: 200;
+  background: var(--azul-profundo); color: var(--papel);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(14px, 2.4vw, 32px);
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase;
+  transition: transform 1s cubic-bezier(.76, 0, .24, 1);
+}
+.anim .pre::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(157, 190, 255, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 190, 255, .12) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.pre.fim { transform: translateY(-101%); pointer-events: none; }
+.pre.some { display: none !important; }
+.pre > * { position: relative; }
+.pre-topo { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 1rem; color: var(--azul-traco); }
+.pre-topo b { font-weight: 500; color: var(--papel); }
+.pre-log { grid-column: 2; grid-row: 2; align-self: center; justify-self: end; width: min(360px, 100%); list-style: none; padding: 0; display: grid; gap: .35rem; }
+.pre-log li { display: flex; gap: .9rem; opacity: .25; transition: opacity .25s, color .25s; }
+.pre-log li span { color: var(--azul-traco); }
+.pre-log li.on { opacity: 1; }
+.pre-log li.on::after { content: "OK"; margin-left: auto; color: var(--laranja); }
+.pre-num {
+  grid-column: 1; grid-row: 3;
+  font-family: var(--serif); text-transform: none; letter-spacing: -.03em;
+  font-size: clamp(5.5rem, 20vw, 17rem); line-height: .8; margin-left: -.04em;
+}
+.pre-num small { font-size: .35em; letter-spacing: 0; }
+.pre-barra { grid-column: 1 / -1; grid-row: 3; align-self: end; height: 2px; background: rgba(157, 190, 255, .25); }
+.pre-barra i { display: block; height: 100%; background: var(--laranja); transform-origin: left; transform: scaleX(0); }
+.pre-num { padding-bottom: .6rem; }
+html.pre-ativo { overflow: hidden; }
+html.pre-ativo body { overflow: hidden; }
+
+/* ---------- 2. MOLDURA FIXA COM CANTONEIRAS ---------- */
+.moldura { display: none; }
+.anim .moldura {
+  display: block; position: fixed; inset: 8px; z-index: 45; pointer-events: none;
+  border: 1px solid #fff; mix-blend-mode: difference; opacity: .38;
+}
+.anim .moldura i {
+  position: absolute; width: 13px; height: 13px;
+  background:
+    linear-gradient(#fff, #fff) center / 1px 100% no-repeat,
+    linear-gradient(#fff, #fff) center / 100% 1px no-repeat;
+}
+.moldura i:nth-child(1) { left: -7px; top: -7px; }
+.moldura i:nth-child(2) { right: -7px; top: -7px; }
+.moldura i:nth-child(3) { left: -7px; bottom: -7px; }
+.moldura i:nth-child(4) { right: -7px; bottom: -7px; }
+.moldura b {
+  position: absolute; left: 2px; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font: 500 9px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #fff; white-space: nowrap;
+}
+.anim:not(.abre) .moldura { opacity: 0; }
+.anim.abre .moldura { opacity: .38; transition: opacity 1s ease 2.2s; }
+
+/* ---------- 3. FITA EM LOOP NA CAPA ---------- */
+.faixa { display: none; }
+.anim .faixa {
+  display: block; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0;
+  overflow: hidden; white-space: nowrap;
+  border-top: 1px solid rgba(157, 190, 255, .3);
+  background: rgba(10, 33, 102, .6);
+  font: 500 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--azul-traco);
+  padding: .8rem 0;
+}
+.faixa-trilho { display: inline-flex; animation: faixa 38s linear infinite; will-change: transform; }
+.faixa-trilho span { padding-right: 2.2rem; }
+.faixa-trilho span::after { content: "+"; margin-left: 2.2rem; color: var(--laranja); }
+@keyframes faixa { to { transform: translateX(-50%); } }
+.anim .capa .dica { bottom: 3.6rem; }
+.anim:not(.abre) .faixa { transform: translateY(100%); }
+.anim.abre .faixa { transform: none; transition: transform 1s var(--ease) 2.5s; }
+
+/* ---------- 4. CANTOS DE PRANCHA NOS CARTÕES ---------- */
+.anim .detalhe, .anim .cards-vest li, .anim .rolo { --tk: color-mix(in srgb, var(--line) 85%, transparent); }
+.anim .cards-vest li { position: relative; transition: transform .4s var(--ease), background .3s, opacity .9s ease, transform 1s var(--ease); }
+.anim .detalhe::before, .anim .cards-vest li::before, .anim .rolo::before {
+  content: ""; position: absolute; inset: -1px; pointer-events: none; z-index: 1;
+  background:
+    linear-gradient(var(--tk), var(--tk)) 0 0 / 14px 2px,
+    linear-gradient(var(--tk), var(--tk)) 0 0 / 2px 14px,
+    linear-gradient(var(--tk), var(--tk)) 100% 0 / 14px 2px,
+    linear-gradient(var(--tk), var(--tk)) 100% 0 / 2px 14px,
+    linear-gradient(var(--tk), var(--tk)) 0 100% / 14px 2px,
+    linear-gradient(var(--tk), var(--tk)) 0 100% / 2px 14px,
+    linear-gradient(var(--tk), var(--tk)) 100% 100% / 14px 2px,
+    linear-gradient(var(--tk), var(--tk)) 100% 100% / 2px 14px;
+  background-repeat: no-repeat;
+}
+.anim .rolo { position: relative; }
+.cards-vest li:hover { background: color-mix(in srgb, var(--line) 18%, transparent); }
+.cards-vest li:hover::before { --tk: var(--laranja); }
+.cards-vest li { counter-increment: v; }
+.cards-vest { counter-reset: v; }
+.anim .cards-vest li h3::before { content: "[0" counter(v) "]"; display: block; font: 500 .68rem/1 var(--mono); color: var(--laranja); margin-bottom: .7rem; letter-spacing: .08em; }
+
+/* ---------- 5. BOTÕES COM PREENCHIMENTO ---------- */
+.anim .entrar, .anim .menu-btn {
+  background-image: linear-gradient(var(--laranja), var(--laranja));
+  background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 0;
+  transition: background-size .45s cubic-bezier(.76, 0, .24, 1), color .3s, transform .2s var(--ease);
+}
+.anim .entrar:hover, .anim .menu-btn:hover { background-size: 100% 100%; color: #fff; }
+.anim .entrar:hover { background-color: var(--papel); }
+
+/* ---------- 6. RÓTULOS [01] + TEXTO MONO EMBARALHADO ---------- */
+.anim .prancha:not(.capa) .tag::before { content: "[ "; color: var(--laranja); }
+.anim .prancha:not(.capa) .tag::after { content: " ]"; color: var(--laranja); }
+.anim .prancha:not(.capa) .tag {
+  display: inline-flex; align-items: center; gap: 0; letter-spacing: .1em; text-transform: uppercase;
+}
+.anim .prancha:not(.capa) .frase::after { /* régua que se desenha sob o título */
+  content: ""; display: block; height: 1px; width: 0; margin-top: 1.1rem;
+  background: var(--line); opacity: .7; transition: width 1.4s var(--ease) .5s;
+}
+.anim .prancha.in:not(.capa) .frase::after { width: min(100%, 22ch); }
+
+/* ---------- 7. LISTAS: LINHA DE VARREDURA AO PASSAR O MOUSE ---------- */
+.anim .lista button { position: relative; }
+.anim .lista button::after {
+  content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%;
+  background: var(--laranja); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease);
+}
+.anim .lista button:hover::after, .anim .lista button[aria-selected="true"]::after { transform: scaleX(1); }
+.anim .lista button[aria-selected="true"]::before { background: var(--laranja); border-color: var(--laranja); }
+
+@media (max-width: 900px) {
+  .moldura b { display: none; }
+  .anim .pre { grid-template-columns: 1fr; }
+  .pre-log { grid-column: 1; justify-self: start; }
+  .anim .capa .dica { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pre, .moldura, .faixa { display: none !important; }
+}

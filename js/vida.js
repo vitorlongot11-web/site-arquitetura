@@ -16,14 +16,18 @@
     if (root.classList.contains('abre')) return;
     requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('abre')));
   };
-  if (document.fonts && document.fonts.load) {
+  /* a capa só abre quando as fontes carregaram E o preloader (heron.js) terminou */
+  let fontesOk = !(document.fonts && document.fonts.load), preOk = !document.getElementById('pre');
+  const tenta = () => { if (fontesOk && preOk) abrir(); };
+  if (!fontesOk) {
     Promise.all([
       document.fonts.load('64px "Instrument Serif"'),
       document.fonts.load('16px "IBM Plex Sans"'),
       document.fonts.load('16px "IBM Plex Mono"'),
-    ]).catch(() => {}).then(abrir);
+    ]).catch(() => {}).then(() => { fontesOk = true; tenta(); });
   }
-  setTimeout(abrir, 1500);
+  addEventListener('pre:fim', () => { preOk = true; tenta(); });
+  setTimeout(abrir, 6000);
 
   capa.querySelectorAll('.ficha p').forEach((p, i) => p.style.setProperty('--h', (1.5 + i * 0.1).toFixed(2) + 's'));
 
