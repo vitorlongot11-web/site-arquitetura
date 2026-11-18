@@ -638,3 +638,18 @@ body { font-weight: 500; font-size: clamp(.8rem, min(.55vw + .95rem, 2.75vh), 1.
 .pi-entrar span { font-size: clamp(.75rem, 1.9vh, 2.6rem); }
 .pre .pre-num { font-size: clamp(2.6rem, min(9vw, 13vh), 17rem); }
 .pre.info .pre-num { font-size: clamp(2.2rem, 7vh, 12rem); }
+
+/* ==========================================================
+   LOGO (compasso) ao lado de "Arquitetura" na tela de
+   carregamento e no espaço vazio da página de Fontes.
+   ========================================================== */
+.pre-info h2 { display: flex; align-items: center; gap: .18em; }
+.pre-info h2 .pre-logo { flex: none; width: .78em; height: .73em; margin-top: .06em; color: var(--azul-profundo); stroke-width: 7; }
+
+.fontes-logo { display: grid; place-items: center; align-self: stretch; min-height: 0; }
+.fontes-logo .emb {
+  width: min(100%, 24vh); height: auto; max-height: 100%; color: var(--fg); stroke-width: 5.5;
+}
+.js #fontes .fontes-logo .tr { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js #fontes.is-active .fontes-logo .tr { animation: tracar 1.8s var(--ease) forwards; animation-delay: calc(var(--d, 0) * .6s + .5s); }
+@media (prefers-reduced-motion: reduce) { .js #fontes .fontes-logo .tr { stroke-dashoffset: 0; animation: none; } }
